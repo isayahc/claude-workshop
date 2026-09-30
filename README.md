@@ -51,6 +51,17 @@ streamlit run app.py
 
 Open the local URL printed by Streamlit (normally http://localhost:8501).
 
+### Use with an MCP-compatible agent
+
+Orbital Studio also runs as a standalone local MCP server (stdio), without Streamlit or an agent-specific dependency:
+
+```bash
+python -m pip install -e '.[mcp]'
+orbital-studio-mcp --data-dir ./examples/mcp
+```
+
+Connect this command in your MCP client's configuration to inspect CUBE/transition files, broaden spectra, and export offline HTML/CSV. The required data directory limits which local files the tools can read; exports are created under its `exports` directory by default. No API key or password is required. See the [MCP setup guide](docs/mcp.md) for Windows commands, generic client configuration, tool schemas, an example session, and data-handling limitations.
+
 ### Features
 
 - Rotate and zoom signed orbital isosurfaces with atoms and inferred bonds.
@@ -87,6 +98,6 @@ Files are processed by the app's Python server. Run locally for local-only calcu
 python -m pytest -q
 ```
 
-Tests cover CUBE ordering/units/affine axes, malformed data, signed surfaces, spectrum area conservation, CSV validation, and Streamlit demo/upload states.
+Tests cover CUBE ordering/units/affine axes, malformed data, signed surfaces, spectrum area conservation, CSV validation, Streamlit demo/upload states, MCP schemas and stdio calls, export contents, and bounded local file access.
 
 References: [ORCA NTO/TDDFT documentation](https://www.faccts.de/docs/orca/6.1/manual/contents/spectroscopyproperties/tddft.html), [cclib data units](https://cclib.github.io/data.html), [CUBE format](https://paulbourke.org/dataformats/cube/).
