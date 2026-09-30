@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orbital-studio"
+version = "0.1.0"
+description = "Local molecular orbital and transition-spectrum inspection"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.0,<3",
+    "plotly>=5.24,<7",
+    "scikit-image>=0.24,<1",
+    "cclib>=1.8.1,<2",
+]
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.28,<2"]
+ui = ["streamlit>=1.54,<2"]
+test = ["pytest>=8,<10", "jsonschema>=4.23,<5"]
+
+[project.scripts]
+orbital-studio-mcp = "orbital_viewer.mcp_server:main"
+
+[tool.setuptools.packages.find]
+include = ["orbital_viewer*"]

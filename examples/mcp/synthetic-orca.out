@@ -1,0 +1,13 @@
+Synthetic parser fixture; not a real quantum-chemistry calculation.
+O   R   C   A
+Program Version 5.0.0
+
+ABSORPTION SPECTRUM VIA TRANSITION ELECTRIC DIPOLE MOMENTS
+-----------------------------------------------------------------------------
+State   Energy  Wavelength   fosc         T2         TX        TY        TZ
+        (cm-1)    (nm)                  (au**2)     (au)      (au)      (au)
+-----------------------------------------------------------------------------
+   1  32262.175748  309.960496  0.72  0.0  0.0  0.0  0.0
+   2  40327.719685  247.968397  0.26  0.0  0.0  0.0  0.0
+
+End of synthetic parser fixture.
