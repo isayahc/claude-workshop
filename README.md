@@ -35,3 +35,58 @@ Add setup instructions and verification steps alongside each exercise or project
 ## Contributing
 
 Add material that is practical, clearly explained, and easy to try. Include any prerequisites and instructions needed to reproduce the result.
+
+## Orbital Studio
+
+A Python/Streamlit molecular orbital viewer inspired by the workshop's ORCA/NTO visualization workflow. No ORCA installation is needed to view existing data.
+
+### Run (Python 3.11+ / WSL2)
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Open the local URL printed by Streamlit (normally http://localhost:8501).
+
+### Features
+
+- Rotate and zoom signed orbital isosurfaces with atoms and inferred bonds.
+- Upload multiple `.cube` / `.cub` files, select orbitals without repeating `orca_plot` interactions, and compare manually assigned hole/electron pairs.
+- Set relative or shared absolute isovalues and surface opacity.
+- Import excitation energies and oscillator strengths from cclib-supported ORCA `.out` / `.log` files or CSV.
+- Explore Gaussian-broadened spectra in eV or nm and export the curve as CSV.
+- Export standalone interactive orbital HTML files, individually or as a ZIP batch.
+- Try clearly labeled illustrative benzene-like fields and a synthetic spectrum immediately.
+
+CSV schema:
+
+```csv
+energy_ev,oscillator_strength
+4.241,0.72
+4.85,0.26
+```
+
+### Scientific scope and limitations
+
+The demo is an analytic illustration, **not** a computed Si nanoparticle/ethylbenzene system or validated NTO calculation. Orbital surfaces show signed wavefunction amplitude; colors are phases, not charge. CUBE amplitude units come from the producing calculation. Coordinates are converted to angstroms. Bond connectivity is inferred from distances and does not encode bond order.
+
+This app visualizes existing CUBE grids; it does not calculate orbitals, run ORCA, read binary `.gbw`/`.nto` files, or automatically pair NTOs. Export each orbital with `orca_plot` first, then batch-load the results. Hole/electron assignment is manual. The two cameras are independent and molecular structures are not automatically aligned. Relative thresholds scale each field separately; use an absolute threshold for amplitude comparisons.
+
+Supported: scalar CUBE grids, single-orbital negative-atom-count CUBE records, Fortran D exponents, full affine/skew grid axes, positive-count Bohr grids and negative-count angstrom grids. Multi-field CUBEs and mixed-sign grid dimensions are rejected explicitly. Each file is limited to 40 MB and 4 million voxels. Many large grids or dense isosurfaces may still consume substantial memory.
+
+Spectrum broadening uses area-normalized Gaussians in **energy space**, with FWHM in eV. Oscillator strengths determine areas. The wavelength view plots the same envelope against `hc/E`; its ordinate remains f/eV, not f/nm. This is not a prediction of calibrated absorbance. cclib compatibility varies by ORCA version/output; CSV is the explicit fallback. No NTO weights are inferred from oscillator strengths.
+
+Files are processed by the app's Python server. Run locally for local-only calculation handling. Offline exported HTML embeds Plotly and the displayed data.
+
+### Verification
+
+```bash
+python -m pytest -q
+```
+
+Tests cover CUBE ordering/units/affine axes, malformed data, signed surfaces, spectrum area conservation, CSV validation, and Streamlit demo/upload states.
+
+References: [ORCA NTO/TDDFT documentation](https://www.faccts.de/docs/orca/6.1/manual/contents/spectroscopyproperties/tddft.html), [cclib data units](https://cclib.github.io/data.html), [CUBE format](https://paulbourke.org/dataformats/cube/).
