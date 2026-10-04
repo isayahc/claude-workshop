@@ -1,0 +1,291 @@
+{
+  "schema_version": "1",
+  "benchmark_id": "SENSOR-01",
+  "issue_url": "https://github.com/isayahc/claude-workshop/issues/10",
+  "artifact_kind": "engineering_proposal_sidecar_not_validated_HardwareIR",
+  "sources": {
+    "N1": {
+      "title": "NIST: Meet the Constants",
+      "url": "https://www.nist.gov/si-redefinition/meet-constants",
+      "locator": "c, h, e definitions",
+      "reviewed_on_utc": "2026-10-04"
+    },
+    "D1": {
+      "title": "sglux SG01S-18S datasheet, Rev. 6.4",
+      "url": "https://download.sglux.de/photodiodes/SG01S-18S.pdf",
+      "locator": "page 2, specifications and normalized response graph; graph inspected as image",
+      "reviewed_on_utc": "2026-10-04"
+    },
+    "D2": {
+      "title": "sglux SG01S-18S product and publications",
+      "url": "https://sglux.de/en/product/sg01s-18s-en/",
+      "locator": "product overview and 2024 SiC publication abstract",
+      "reviewed_on_utc": "2026-10-04"
+    },
+    "F1": {
+      "title": "Edmund Optics #67-749",
+      "url": "https://www.edmundoptics.com/p/300nm-cwl-10nm-fwhm-125mm-mounted-diameter/22416/",
+      "locator": "Specifications; minimum transmission is not a lot-specific T(300 nm)",
+      "reviewed_on_utc": "2026-10-04"
+    },
+    "A1": {
+      "title": "TI LMP7721",
+      "url": "https://www.ti.com/product/LMP7721",
+      "locator": "features; typical values at 25 C and 5 V unless otherwise stated",
+      "reviewed_on_utc": "2026-10-04"
+    },
+    "A2": {
+      "title": "TI ADS1115 datasheet Rev. E",
+      "url": "https://www.ti.com/lit/gpn/ADS1115",
+      "locator": "pp. 4, 15: recommended input voltage range and full-scale/code size; inspected as images",
+      "reviewed_on_utc": "2026-10-04"
+    },
+    "A3": {
+      "title": "TI ADS1115 product",
+      "url": "https://www.ti.com/product/ADS1115",
+      "locator": "16-bit ADC, I2C, 2.0-5.5 V, 150 uA continuous mode, 8-860 SPS",
+      "reviewed_on_utc": "2026-10-04"
+    },
+    "Q1": {
+      "title": "Quantum ESPRESSO pw2gw.x",
+      "url": "https://www.quantum-espresso.org/Doc/INPUT_pw2gw.html",
+      "locator": "optical matrix elements and dielectric tensor outputs",
+      "reviewed_on_utc": "2026-10-04"
+    },
+    "Q2": {
+      "title": "Yambo: Two particle excitations",
+      "url": "https://wiki.yambo-code.eu/wiki/index.php/Two_particle_excitations",
+      "locator": "BSE workflow from previously calculated electronic structure",
+      "reviewed_on_utc": "2026-10-04"
+    },
+    "R1": {
+      "title": "Orbital Studio MCP contract",
+      "url": "https://github.com/isayahc/claude-workshop/blob/3d326f4d516bd6851c6e6eeb8cc68b1a0f361800/docs/mcp.md",
+      "locator": "Tools and result contract; Scientific limitations",
+      "reviewed_on_utc": "2026-10-04"
+    }
+  },
+  "inputs": {
+    "target_wavelength": {
+      "value": 300,
+      "unit": "nm",
+      "classification": "Assumed",
+      "rationale": "Target specified by issue #10; not a measured source wavelength"
+    },
+    "rail": {
+      "value": 3.3,
+      "unit": "V",
+      "classification": "Assumed",
+      "rationale": "Common proposed analog/digital supply; host provides regulation"
+    },
+    "bias": {
+      "value": 1.0,
+      "unit": "V",
+      "classification": "Assumed",
+      "rationale": "Buffered photodiode/TIA reference below amplifier positive common-mode limit"
+    },
+    "output_ceiling": {
+      "value": 3.0,
+      "unit": "V",
+      "classification": "Assumed",
+      "rationale": "Conservative design ceiling; verify output swing under actual load"
+    },
+    "adc_positive_full_scale": {
+      "value": 2.048,
+      "unit": "V",
+      "classification": "Assumed",
+      "rationale": "Select ADS1115 supported +/-2.048 V range [A2]; differential inputs remain inside the supply rails"
+    },
+    "adc_bits": {
+      "value": 16,
+      "unit": "bit",
+      "classification": "External knowledge",
+      "source_id": "A3",
+      "conditions": "Nominal converter word width; not noise-free effective resolution"
+    }
+  },
+  "gain_options": [
+    {
+      "feedback_ohm": 1000000.0,
+      "feedback_f": 1e-08,
+      "classification": "Assumed",
+      "rationale": "Lower-gain population option, not automatic switching; stability to be validated"
+    },
+    {
+      "feedback_ohm": 10000000.0,
+      "feedback_f": 1e-09,
+      "classification": "Assumed",
+      "rationale": "Higher-gain population option, not automatic switching; stability to be validated"
+    }
+  ],
+  "manufacturer_evidence": {
+    "detector_area": {
+      "value": 0.06,
+      "unit": "mm2",
+      "classification": "External knowledge",
+      "source_id": "D1",
+      "conditions": "SG01S-18S; nominal active area"
+    },
+    "detector_peak_responsivity": {
+      "value": 0.16,
+      "unit": "A/W",
+      "classification": "External knowledge",
+      "source_id": "D1",
+      "conditions": "Typical value at 280 nm, not at 300 nm"
+    },
+    "detector_peak_wavelength": {
+      "value": 280,
+      "unit": "nm",
+      "classification": "External knowledge",
+      "source_id": "D1",
+      "conditions": "Typical spectral peak"
+    },
+    "detector_10_percent_response_interval": {
+      "value": [
+        221,
+        358
+      ],
+      "unit": "nm",
+      "classification": "External knowledge",
+      "source_id": "D1",
+      "conditions": "Interval at 10% of peak; not a calibrated measurement range"
+    },
+    "detector_capacitance": {
+      "value": 15,
+      "unit": "pF",
+      "classification": "External knowledge",
+      "source_id": "D1",
+      "conditions": "General characteristics table at 25 C; actual PCB adds capacitance"
+    },
+    "filter_cwl": {
+      "value": 300,
+      "unit": "nm",
+      "classification": "External knowledge",
+      "source_id": "F1",
+      "conditions": "Nominal; +3/-0 nm tolerance at 0 degree incidence"
+    },
+    "filter_fwhm": {
+      "value": 10,
+      "unit": "nm",
+      "classification": "External knowledge",
+      "source_id": "F1",
+      "conditions": "+/-2 nm; not a rectangular passband"
+    }
+  },
+  "unknowns": {
+    "lot_responsivity_at_300_a_w": null,
+    "lot_filter_transmission_at_300": null,
+    "calibrated_irradiance_range_w_m2": null,
+    "noise_psd_a2_hz": null,
+    "measured_accuracy_percent": null,
+    "validated_sampling_bandwidth_hz": null,
+    "absolute_calibration_artifact": null,
+    "material_specific_transition_artifacts": null,
+    "approved_HardwareIR_schema_version": null
+  },
+  "proposed_ir": {
+    "implementation_status": "proposed_fields_only; no CAID import or schema validation performed",
+    "assembly": {
+      "id": "sensor01",
+      "envelope_mm": {
+        "value": [
+          30,
+          30,
+          20
+        ],
+        "classification": "Assumed"
+      },
+      "children": [
+        "optical-filter",
+        "photodiode",
+        "tia",
+        "adc",
+        "host-interface",
+        "housing"
+      ]
+    },
+    "optical_path": {
+      "ordered_nodes": [
+        "aperture-baffle",
+        "optical-filter",
+        "photodiode"
+      ],
+      "spectral_transfer_artifact": null,
+      "field_of_view_artifact": null,
+      "coordinate_frame": "detector_normal"
+    },
+    "photodiode": {
+      "part": "SG01S-18S",
+      "material": "SiC; datasheet response graph labelled 4H",
+      "mechanism": "photogenerated carrier collection",
+      "response_artifact": null,
+      "evidence_refs": [
+        "D1",
+        "D2"
+      ]
+    },
+    "tia": {
+      "part": "LMP7721",
+      "topology": "zero-bias photodiode; cathode at summing node, anode at buffered reference",
+      "input_reference_v": 1.0,
+      "gain_options_ref": "gain_options",
+      "stability_artifact": null,
+      "classification": "Assumed"
+    },
+    "adc": {
+      "part": "ADS1115",
+      "interface": "I2C",
+      "differential_pair": [
+        "TIA_OUT",
+        "VREF"
+      ],
+      "configured_full_scale_v": [
+        -2.048,
+        2.048
+      ],
+      "data_rate_sps": 128,
+      "classification": "Assumed"
+    },
+    "measurement": {
+      "measurand": "band-limited optical signal near 300 nm; not UV Index",
+      "raw_unit": "ADC code",
+      "calibrated_unit": "W/m2 only after traceable calibration",
+      "calibration_id": null,
+      "uncertainty_model": null,
+      "saturation_flag_required": true,
+      "calibration_valid_required": true
+    },
+    "evidence_required_fields": [
+      "claim_id",
+      "classification",
+      "source_uri",
+      "artifact_hash",
+      "conditions",
+      "units",
+      "uncertainty",
+      "derivation_dependencies"
+    ],
+    "validation": {
+      "prototype_test_allowed": true,
+      "production_release_allowed": false,
+      "gates": [
+        "spectral calibration",
+        "noise and linearity",
+        "out-of-band rejection",
+        "angle/temperature",
+        "electrical stability",
+        "mechanical verification"
+      ]
+    }
+  },
+  "engineering_decision": {
+    "status": "proceed_to_reviewed_prototype_not_calibrated_instrument",
+    "release_allowed": false,
+    "confidence": {
+      "physical_detection_feasibility": "high based on manufacturer spectral coverage",
+      "BOM_integration": "medium; design not built",
+      "absolute_irradiance_and_detection_limit": "unestablished"
+    },
+    "no_quantum_calculation_required_for_COTS_prototype": true
+  }
+}
