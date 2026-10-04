@@ -13,7 +13,7 @@ jobs:
           python-version: '3.11'
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python -m pytest -q
+      - run: python -m pytest -q --junitxml=.benchmark-runs/test-results.xml
       - name: Record PROCESS-01 actual MCP calls and synthetic exports
         run: python -m orbital_viewer.benchmark --plan benchmarks/PROCESS-01/plan.json --data-dir examples/mcp --output .benchmark-runs/PROCESS-01
       - name: Publish PROCESS-01 evidence (never a production recipe)
@@ -22,5 +22,44 @@ jobs:
         with:
           name: PROCESS-01-synthetic-evidence-${{ github.run_id }}-${{ github.run_attempt }}
           path: .benchmark-runs/PROCESS-01/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Record SENSOR-01 actual MCP calls and synthetic exports
+        run: python -m orbital_viewer.benchmark --plan benchmarks/SENSOR-01/plan.json --data-dir examples/mcp --output .benchmark-runs/SENSOR-01
+      - name: Derive uncalibrated SENSOR-01 sizing and preserve inputs
+        run: |
+          python -m orbital_viewer.sensor_design --design benchmarks/SENSOR-01/design.json --output .benchmark-runs/SENSOR-01/design-preview.json
+          cp benchmarks/SENSOR-01/design.json .benchmark-runs/SENSOR-01/design.json
+          cp benchmarks/SENSOR-01/README.md .benchmark-runs/SENSOR-01/benchmark-report.md
+      - name: Preserve SENSOR-01 test results even on failure
+        if: always()
+        run: |
+          mkdir -p .benchmark-runs/SENSOR-01
+          if [ -f .benchmark-runs/test-results.xml ]; then cp .benchmark-runs/test-results.xml .benchmark-runs/SENSOR-01/test-results.xml; fi
+      - name: Publish SENSOR-01 evidence (not a calibrated detector)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SENSOR-01-synthetic-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .benchmark-runs/SENSOR-01/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Record BAT-01 actual MCP calls (synthetic CUBE only)
+        run: python -m orbital_viewer.benchmark --plan benchmarks/BAT-01/plan.json --data-dir examples/mcp --output .benchmark-runs/BAT-01
+      - name: Evaluate BAT-01 reference-aware screening (not cell qualification)
+        run: python -m orbital_viewer.electrolyte_screen --design benchmarks/BAT-01/design.json --output .benchmark-runs/BAT-01/assessment.json
+      - name: Preserve BAT-01 inputs and tests even on failure
+        if: always()
+        run: |
+          mkdir -p .benchmark-runs/BAT-01
+          cp benchmarks/BAT-01/design.json benchmarks/BAT-01/sources.json benchmarks/BAT-01/workflow.json .benchmark-runs/BAT-01/
+          cp benchmarks/BAT-01/README.md .benchmark-runs/BAT-01/benchmark-report.md
+          if [ -f .benchmark-runs/test-results.xml ]; then cp .benchmark-runs/test-results.xml .benchmark-runs/BAT-01/test-results.xml; fi
+      - name: Publish BAT-01 evidence (not an approved electrolyte)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BAT-01-synthetic-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .benchmark-runs/BAT-01/
           if-no-files-found: warn
           retention-days: 30

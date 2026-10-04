@@ -1,0 +1,15 @@
+{
+  "schema_version": "1",
+  "benchmark_id": "BAT-01",
+  "evidence_scope": "synthetic_fixture",
+  "input_source_revision": "3d326f4d516bd6851c6e6eeb8cc68b1a0f361800",
+  "purpose": "Exercise CUBE inspection/export only. This fixture is not an electrolyte orbital, and no result establishes electrochemical stability.",
+  "unknown_quantities": ["oxidation_potential_v", "reduction_potential_v", "candidate_orbital_energies_ev", "decomposition_barriers_ev", "electrolyte_conductivity_s_m", "approved_terminal_charge_voltage_v"],
+  "assumptions": [{"classification": "Assumed", "parameter": "Scalar-field display isovalue", "value": 0.5, "unit": "source-defined", "reason": "Synthetic display setting only, not an orbital assignment"}],
+  "inputs": [{"filename": "signed-field.cube", "provenance": "Repository examples/mcp/signed-field.cube: synthetic scalar field, NOT any BAT-01 candidate, molecular orbital, or electron density", "source_blob_sha1": "00360f0401245ef8fa2524e3079da0adfed44ea3"}],
+  "calls": [
+    {"name": "inspect_cube", "arguments": {"filename": "signed-field.cube"}},
+    {"name": "export_orbital", "arguments": {"filename": "signed-field.cube", "isovalue": 0.5}}
+  ],
+  "intentionally_unused_tools": {"inspect_transitions": "No candidate transition data; optical excitations do not establish redox potentials", "broaden_spectrum": "No optical-spectrum question in BAT-01", "export_spectrum": "No scientifically relevant spectrum to export"}
+}
