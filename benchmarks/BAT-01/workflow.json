@@ -1,0 +1,27 @@
+{
+  "schema_version": "1",
+  "benchmark_id": "BAT-01",
+  "classification": "Assumed",
+  "execution_status": "proposed_not_executed",
+  "note": "Required upstream job graph, not an implemented quantum-chemistry adapter. No electronic-structure job was run for a candidate.",
+  "jobs": [
+    {"id": "scope", "depends_on": [], "owner": "electrochemist", "status": "blocked_missing_inputs", "requires": ["approved candidate identities and structures", "voltage reference and full-cell vs electrode interpretation", "electrode chemistry", "salt, concentration, solvent/additive fractions, temperature, rates, impurities", "uncertainty and engineering margin policy"], "outputs": ["scope.json", "structures.sdf", "formulation.json"]},
+    {"id": "conformers", "depends_on": ["scope"], "owner": "upstream molecular workflow", "status": "not_run", "requires": ["validated molecular identities and stereochemistry", "conformer and cluster sampling policy"], "outputs": ["initial geometries.xyz", "species-and-conformer-map.json"]},
+    {"id": "electronic_states", "depends_on": ["conformers"], "owner": "external quantum engine", "status": "not_run", "requires": ["neutral, oxidized and reduced species; total charge and multiplicity", "validated method, basis and solvation model", "isolated controls and representative Li+/counterion/solvent clusters"], "outputs": ["input decks", "raw engine logs", "optimized geometries", "wavefunctions", "energies with units", "SCF/convergence/spin checks", "frequencies and thermal corrections", "fragmentation diagnostics"]},
+    {"id": "redox_thermodynamics", "depends_on": ["electronic_states"], "owner": "reference-aware thermochemistry adapter", "status": "not_run", "requires": ["consistent solution free energies and standard states", "balanced redox reactions", "validated reference couple in matching medium", "uncertainty and conformer/cluster sensitivity"], "outputs": ["thermochemistry.json", "redox-potentials.json", "reference-calibration.json", "uncertainty-budget.json"]},
+    {"id": "decomposition_and_interfaces", "depends_on": ["electronic_states", "redox_thermodynamics"], "owner": "electrochemist and reaction-workflow operator", "status": "not_run", "requires": ["reachable oxidation/reduction products", "salt/additive reactions", "candidate-dependent electrode interfaces", "transition states and pathway validation where mechanistic claims are needed"], "outputs": ["reaction-network.json", "transition-state and pathway logs", "barrier uncertainty", "SEI-CEI hypotheses and competing pathways"]},
+    {"id": "transport_and_materials", "depends_on": ["scope"], "owner": "simulation operator and electrolyte laboratory", "status": "not_run", "requires": ["specified mixture and temperature range", "validated force field or experimental protocol"], "outputs": ["solvation/speciation evidence", "conductivity and viscosity data", "wetting and phase behavior", "materials compatibility and thermal data"]},
+    {"id": "cell_validation", "depends_on": ["decomposition_and_interfaces", "transport_and_materials"], "owner": "battery laboratory and safety engineer", "status": "not_run", "requires": ["target electrode tests and matched control", "formation protocol", "approved test conditions and pass/fail criteria"], "outputs": ["electrochemical holds and scans with metadata", "full-cell cycle and calendar data", "gas and impedance measurements", "post-mortem analysis", "safety review"]},
+    {"id": "caid_handoff", "depends_on": ["cell_validation"], "owner": "CAID integrator and battery reviewers", "status": "not_run", "requires": ["approved formulation and cell operating envelope", "target Hardware IR schema", "reviewer sign-off"], "outputs": ["validated subsystem specification", "requirements/evidence traceability", "explicit charger and BMS constraints"]}
+  ],
+  "orbital_artifact_handoff": {"after_job": "electronic_states", "status": "blocked_no_candidate_cubes", "requires": ["candidate/state/conformer identifiers", "engine revision and input/output hashes", "CUBE field meaning and units", "orbital index, occupation and energy from the engine", "grid/origin/axes and any density-difference registration"], "tools": ["inspect_cube", "export_orbital"], "does_not_replace": ["redox thermodynamics", "decomposition calculations", "cell validation"]},
+  "manual_handoffs": [
+    {"id": "H1", "owner": "cell designer", "deliverable": "Resolve the 4.3 V reference and confirm candidates, electrode pair and operating envelope"},
+    {"id": "H2", "owner": "electrochemist", "deliverable": "Approve formulations, competing reactions and margin/calibration policy"},
+    {"id": "H3", "owner": "quantum-workflow operator", "deliverable": "Configure a licensed/available engine and export converged states with provenance"},
+    {"id": "H4", "owner": "thermochemistry reviewer", "deliverable": "Review charge/spin, fragmented states, standard states, references and uncertainties"},
+    {"id": "H5", "owner": "simulation or laboratory operator", "deliverable": "Supply mixture transport, phase, wetting and compatibility evidence"},
+    {"id": "H6", "owner": "battery laboratory", "deliverable": "Supply target-cell validation and interphase/decomposition measurements"},
+    {"id": "H7", "owner": "safety engineer and CAID integrator", "deliverable": "Approve the cell operating envelope and validate/import the subsystem specification"}
+  ]
+}

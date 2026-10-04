@@ -1,0 +1,54 @@
+{
+  "schema_version": "1",
+  "benchmark_id": "BAT-01",
+  "issue": "https://github.com/isayahc/claude-workshop/issues/11",
+  "evidence_scope": "screening_plan",
+  "release_allowed": false,
+  "target": {
+    "cathode_potential": {"value": 4.3, "unit": "V", "kind": "operating_potential", "reference": null, "conditions_id": null, "uncertainty_v": null, "classification": "Observed", "evidence_ids": ["ISSUE-11"]},
+    "value_note": "Approximately 4.3 V is a supplied requirement, not a measurement; neither reference electrode nor full-cell terminal voltage is specified.",
+    "anode_potential": null,
+    "required_margin_v": null
+  },
+  "context": {
+    "cathode_chemistry": null, "anode_chemistry": null,
+    "salt_identity": null, "salt_concentration_mol_l": null,
+    "solvent_fractions_and_basis": null, "additive_fractions_and_basis": null,
+    "temperature_range_c": null, "current_rates": null,
+    "water_and_impurity_limits": null, "formation_protocol": null,
+    "cycle_and_calendar_life_requirements": null,
+    "reference_electrode_and_calibration": null
+  },
+  "candidate_list_provenance": {"classification": "Assumed", "reason": "Proposed comparison set; the issue supplied no candidate identities. Chemical structures, stereochemistry and lots remain unverified."},
+  "candidates": [
+    {"id": "EC", "name": "ethylene carbonate", "role": "baseline co-solvent", "source_ids": ["S3", "S5"], "assessment": "Useful comparator for graphite interphase formation; not a universal high-voltage choice, especially for Ni-rich cathodes.", "assessment_classification": "External knowledge", "oxidation_potential": null, "reduction_potential": null, "scientific_artifacts": []},
+    {"id": "EMC", "name": "ethyl methyl carbonate", "role": "linear-carbonate co-solvent", "source_ids": ["S3", "S5"], "assessment": "Compare EC-containing baseline and, conditionally for Ni-rich/graphite cells, an EC-free formulation with a validated interphase-forming additive.", "assessment_classification": "External knowledge", "oxidation_potential": null, "reduction_potential": null, "scientific_artifacts": []},
+    {"id": "DMC", "name": "dimethyl carbonate", "role": "linear-carbonate co-solvent", "source_ids": ["S3", "S7"], "assessment": "Relevant in both carbonate and sulfolane mixtures; mixture/salt evidence cannot be assigned to the isolated molecule.", "assessment_classification": "External knowledge", "oxidation_potential": null, "reduction_potential": null, "scientific_artifacts": []},
+    {"id": "PC", "name": "propylene carbonate", "role": "conditional comparator", "source_ids": ["S3"], "assessment": "Poor graphite interphase compatibility in conventional formulations is a constraint; not a blanket rejection across all additives, salts and concentrations.", "assessment_classification": "External knowledge", "oxidation_potential": null, "reduction_potential": null, "scientific_artifacts": []},
+    {"id": "SL", "name": "sulfolane", "role": "oxidation-focused research lead", "source_ids": ["S3", "S4", "S7"], "assessment": "Promising high-voltage formulation lead, but salt/additive-dependent graphite behavior, transport and wetting prevent selection on oxidative stability alone.", "assessment_classification": "External knowledge", "oxidation_potential": null, "reduction_potential": null, "scientific_artifacts": []},
+    {"id": "FEC", "name": "fluoroethylene carbonate", "role": "interphase-forming additive comparator, not neat-solvent winner", "source_ids": ["S5", "S7"], "assessment": "Evaluate as an additive within a complete formulation; beneficial sacrificial reduction is not equivalent to intrinsic reductive stability.", "assessment_classification": "External knowledge", "oxidation_potential": null, "reduction_potential": null, "scientific_artifacts": []}
+  ],
+  "engineering_proposal": {
+    "classification": "Assumed",
+    "oxidation_focused_research_lead": "SL",
+    "baseline_components": ["EC", "EMC", "DMC"],
+    "conditional_ni_rich_graphite_comparator": ["EMC", "FEC"],
+    "source_ids": ["S3", "S4", "S5", "S7"],
+    "selected_electrolyte": null,
+    "confidence": {"scientific_boundary": "high", "literature_shortlist_transfer": "low_to_moderate", "candidate_qualification": "insufficient_evidence"},
+    "note": "Research priorities only. No total ranking, solvent mixture recipe or voltage approval is established."
+  },
+  "caid_mapping": {
+    "format": "proposed_engineering_sidecar_not_validated_Hardware_IR",
+    "subsystem_path": "battery.cell.electrolyte",
+    "status": "blocked_pending_formulation_and_cell_validation",
+    "approved_terminal_charge_voltage_v": null,
+    "approved_electrolyte_formulation": null,
+    "approved_operating_temperature_range_c": null,
+    "approved_capacity_and_lifetime": null,
+    "charger_or_bms_change_allowed": false,
+    "schema_validation_performed": false,
+    "caid_import_performed": false,
+    "required_reviewers": ["electrochemist", "battery safety engineer", "CAID integrator"]
+  }
+}
