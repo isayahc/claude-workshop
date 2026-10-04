@@ -1,8 +1,11 @@
 name: Tests
 on: [push, pull_request]
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -11,3 +14,13 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python -m pytest -q
+      - name: Record PROCESS-01 actual MCP calls and synthetic exports
+        run: python -m orbital_viewer.benchmark --plan benchmarks/PROCESS-01/plan.json --data-dir examples/mcp --output .benchmark-runs/PROCESS-01
+      - name: Publish PROCESS-01 evidence (never a production recipe)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PROCESS-01-synthetic-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .benchmark-runs/PROCESS-01/
+          if-no-files-found: warn
+          retention-days: 30
