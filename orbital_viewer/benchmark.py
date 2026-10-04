@@ -1,7 +1,7 @@
 """Record real Orbital Studio MCP calls against explicitly synthetic fixtures.
 
-This recorder is not a chemistry solver or a machine-release mechanism. It keeps
-raw results and file hashes; successful protocol execution never approves a cure.
+This recorder is not a chemistry solver or a hardware-release mechanism. It keeps
+raw results and file hashes; successful protocol execution never approves hardware.
 """
 import argparse
 import asyncio
@@ -17,8 +17,26 @@ import sys
 
 TOOLS = frozenset({"inspect_cube", "inspect_transitions", "broaden_spectrum",
                    "export_orbital", "export_spectrum"})
-WARNING = "SYNTHETIC FIXTURES ONLY - NOT PHOTOINITIATOR OR CURE-PROCESS DATA"
+WARNING = "SYNTHETIC FIXTURES ONLY - NOT MEASURED OR MATERIAL-SPECIFIC SCIENTIFIC DATA"
 MAX_INPUT_BYTES = 40 * 1024 * 1024
+DEFAULT_UNKNOWN_QUANTITIES = [
+    "selected_wavelength_nm", "required_optical_power_w", "irradiance_w_cm2",
+    "required_dose_j_cm2", "exposure_seconds", "maximum_part_temperature_c",
+    "throughput_parts_per_hour",
+]
+
+
+def unknown_quantities(plan):
+    """Plans can name missing quantities, never supply values or release approval."""
+    names = plan.get("unknown_quantities", DEFAULT_UNKNOWN_QUANTITIES)
+    reserved = {"status", "release_allowed", "reason"}
+    if (not isinstance(names, list) or not 1 <= len(names) <= 50
+            or any(not isinstance(name, str) or not name.isascii()
+                   or not name.isidentifier() or not name[0].isalpha()
+                   or len(name) > 100 or name in reserved for name in names)
+            or len(names) != len(set(names))):
+        raise ValueError("unknown_quantities must be unique non-reserved field names")
+    return names
 
 
 def relative_name(value):
@@ -38,6 +56,7 @@ def validate_plan(plan):
         raise ValueError("This recorder only accepts explicitly synthetic fixtures")
     if not isinstance(plan.get("benchmark_id"), str) or not plan["benchmark_id"].strip():
         raise ValueError("benchmark_id is required")
+    unknown_quantities(plan)
     inputs = plan.get("inputs")
     if not isinstance(inputs, list) or not inputs or len(inputs) > 50:
         raise ValueError("Expected 1-50 declared inputs")
@@ -114,12 +133,9 @@ def empty_record(plan):
         "tool_execution_status": "not_started", "input_artifacts": [], "calls": [],
         "generated_artifacts": [], "spectral_diagnostics": [],
         "engineering_decision": {
-            "status": "blocked_missing_material_and_process_data", "release_allowed": False,
-            "selected_wavelength_nm": None, "required_optical_power_w": None,
-            "irradiance_w_cm2": None, "required_dose_j_cm2": None,
-            "exposure_seconds": None, "maximum_part_temperature_c": None,
-            "throughput_parts_per_hour": None,
-            "reason": "Synthetic tool success is not evidence of material suitability or cure performance.",
+            "status": "blocked_missing_material_specific_data", "release_allowed": False,
+            **{name: None for name in unknown_quantities(plan)},
+            "reason": "Synthetic tool success is not evidence of material suitability or device/process performance.",
         },
     }
 
@@ -193,7 +209,7 @@ def run(plan_path, data_dir, output):
     except (OSError, subprocess.SubprocessError):
         record["source_revision"] = None
     (output / "plan.json").write_bytes(plan_bytes)
-    (output / "README.txt").write_text(WARNING + "\nSee run.json for inputs, actual MCP responses, caveats, hashes, and the blocked engineering decision.\nRaw server exports are unchanged; they are not measured absorption or real molecular orbitals.\n", encoding="utf-8")
+    (output / "README.txt").write_text(WARNING + "\nSee run.json for inputs, actual MCP responses, caveats, hashes, and the blocked engineering decision.\nRaw server exports are unchanged; they are not measured response or real molecular orbitals.\n", encoding="utf-8")
     try:
         record["input_artifacts"] = snapshot_inputs(plan, data_dir, output / "inputs")
         record["tool_execution_status"] = "running"
