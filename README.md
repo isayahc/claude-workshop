@@ -36,6 +36,22 @@ Add setup instructions and verification steps alongside each exercise or project
 
 Add material that is practical, clearly explained, and easy to try. Include any prerequisites and instructions needed to reproduce the result.
 
+## ABL1 protein workflow
+
+The [sequence-input guide](docs/abl1-sequences.md) implements the first ABL1/T315I
+workshop stage. It retrieves and caches UniProt P00519 isoform IA, exports the
+wild-type kinase domain and a verified single T315I mutant, and preserves every
+residue's source mapping and provenance. Python 3.11+ is sufficient for this stage.
+
+```bash
+python data/fetch_sequences.py --output .protein-runs/abl1-input
+```
+
+For an offline run, add `--offline --cache tests/fixtures/abl1/P00519.cache.json`
+and choose a new output directory. The default annotated interval is IA residues
+242–493, so source T315 maps to extracted residue 74. Structure prediction,
+pocket detection and docking are the subsequent tracked stages (#5–#8).
+
 ## Orbital Studio
 
 A Python/Streamlit molecular orbital viewer inspired by the workshop's ORCA/NTO visualization workflow. No ORCA installation is needed to view existing data.
