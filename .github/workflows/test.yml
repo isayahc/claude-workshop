@@ -14,6 +14,15 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python -m pytest -q --junitxml=.benchmark-runs/test-results.xml
+      - name: Export verified ABL1 WT and T315I sequences from offline UniProt snapshot
+        run: python -m protein_workflow.sequences --offline --cache tests/fixtures/abl1/P00519.cache.json --output .protein-runs/ABL1-sequences
+      - name: Publish ABL1 sequence inputs and provenance
+        uses: actions/upload-artifact@v4
+        with:
+          name: ABL1-sequences-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .protein-runs/ABL1-sequences/
+          if-no-files-found: error
+          retention-days: 30
       - name: Record SEMI-01 device evidence and actual MCP capability checks
         run: python benchmarks/SEMI-01/reproduce.py --output .benchmark-runs/SEMI-01
       - name: Preserve SEMI-01 test results even on failure

@@ -21,6 +21,7 @@ test = ["pytest>=8,<10", "jsonschema>=4.23,<5"]
 
 [project.scripts]
 orbital-studio-mcp = "orbital_viewer.mcp_server:main"
+abl1-fetch-sequences = "protein_workflow.sequences:main"
 
 [tool.setuptools.packages.find]
-include = ["orbital_viewer*"]
+include = ["orbital_viewer*", "protein_workflow*"]

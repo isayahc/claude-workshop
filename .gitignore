@@ -6,3 +6,5 @@ exports/
 build/
 dist/
 .benchmark-runs/
+.sequence-cache/
+.protein-runs/
