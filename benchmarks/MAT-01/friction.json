@@ -1,0 +1,81 @@
+[
+  {
+    "friction_id": "F01",
+    "stage": "Discovery",
+    "gap_type": "missing scientific data",
+    "expected": "Find grade-matched bulk spectra and candidate CUBE/transition inputs",
+    "observed": "No candidate-relevant electronic-structure files supplied; fixtures are synthetic",
+    "evidence": "plan.json / run.json / input-dataset-inventory.json",
+    "workaround": "Actual MCP smoke tests only; fixtures excluded from material evidence",
+    "impact": "Candidate Orbital analysis blocked; no demonstrated decision value",
+    "reusable_capability_and_success_criterion": "Dataset intake distinguishes grade/thickness/conditions and fixture provenance; an unrelated fixture is never promoted into decision evidence."
+  },
+  {
+    "friction_id": "F02",
+    "stage": "Analysis",
+    "gap_type": "execution environment",
+    "expected": "Launch MCP and list/call all five tools",
+    "observed": "Earlier bundle lacked MCP; current integration uses the existing stdio recorder and dependency-backed CI.",
+    "evidence": "recovery.json and new run.json",
+    "workaround": "Reuse the shared recorder and existing requirements; preserve actual discovery/results.",
+    "impact": "Historical execution blocker resolved when current run succeeds; no new chemistry capability added.",
+    "reusable_capability_and_success_criterion": "A portable locked environment launches real stdio MCP and records initialize/tools-list/calls/artifact hashes without a model key.",
+    "resolution": "Resolved in this implementation; each run still records failures honestly."
+  },
+  {
+    "friction_id": "F03",
+    "stage": "Ingestion",
+    "gap_type": "interface access failure",
+    "expected": "Inspect supplier PDF figures and export raw spectra",
+    "observed": "Manufacturer PDF table readable; exact candidate wavelength arrays unavailable. Silica linked raw-data retrieval failed and its family caption describes a different thickness.",
+    "evidence": "retrieval.json and S02/S03",
+    "workaround": "Retain facts, conditions and source locations; do not digitize, extrapolate or rescale.",
+    "impact": "No matched wavelength-resolved numerical comparison",
+    "reusable_capability_and_success_criterion": "Store fetched PDF/raw spectra and make page images accessible; raw wavelength arrays preserve source figure/table and units."
+  },
+  {
+    "friction_id": "F04",
+    "stage": "Comparison",
+    "gap_type": "missing requirements",
+    "expected": "Apply optical/mechanical gates and then preference scoring",
+    "observed": "Thresholds, impact, service life, detector response and budget absent",
+    "evidence": "requirements.json",
+    "workaround": "Conditional test-article nomination and sensitivity cases",
+    "impact": "Production qualification blocked",
+    "reusable_capability_and_success_criterion": "Three-state gate engine reports unknown separately from pass/fail; cannot export a production-approved decision with unresolved hard gates."
+  },
+  {
+    "friction_id": "F05",
+    "stage": "CAID integration",
+    "gap_type": "schema/runtime integration gap",
+    "expected": "Validate a complete Hardware IR and import it",
+    "observed": "Archived 0.2 model is available and locally executable. Optical constraints remain free-form; current live schema and target project unavailable.",
+    "evidence": "schema-provenance.json / material-entry.proposed.json",
+    "workaround": "Validate with unmodified pinned Pydantic model, export its JSON Schema, and rerun structural/relationship checks in CI.",
+    "impact": "Pinned schema validation resolved; remote import and typed optical qualification remain blocked.",
+    "reusable_capability_and_success_criterion": "Expose versioned schema plus dry-run import; preserve optical evidence IDs and null unknowns in a round trip."
+  },
+  {
+    "friction_id": "F06",
+    "stage": "Export",
+    "gap_type": "publishing capability gap",
+    "expected": "Push isolated branch and open pull request",
+    "observed": "Earlier work stopped at a patch. Current work uses an isolated branch and PR with CI evidence.",
+    "evidence": "recovery.json and PR linked from issue #9",
+    "workaround": "Publish source inputs and CI artifacts through existing repository workflow.",
+    "impact": "Publication can be reviewed and reproduced; merge/final acceptance remain separate.",
+    "reusable_capability_and_success_criterion": "Authenticated branch/PR write route returns URL and commit, then verifies remote tree matches submitted hashes.",
+    "resolution": "Source and CI integration delivered through this PR; no direct default-branch write."
+  },
+  {
+    "friction_id": "F07",
+    "stage": "Ingestion",
+    "gap_type": "data inconsistency",
+    "expected": "Obtain stable stock/price and sheet formats",
+    "observed": "Supplier views change; PMMA old/current format lists differ; PC SQ FT field is inconsistent with dimensions",
+    "evidence": "sources.json S02,S04–S07 and evidence E104,E206,E301",
+    "workaround": "Keep original basis and conflicting values; no area-price-to-delivered-cost conversion",
+    "impact": "Procurement comparison remains conditional",
+    "reusable_capability_and_success_criterion": "Version source retrievals, currency, units, quantity and quote status; dimension-unit contradictions trigger a review warning."
+  }
+]

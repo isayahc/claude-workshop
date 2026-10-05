@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.2",
+  "source_repository": "caid-technologies/Form-OSS",
+  "source_revision": "ffd6772d54fa410e46910890434572333026e395",
+  "archive_sha256": "7ef4282dea2615bd3be44935894679050aaf1c10b3bd5f8772de181de0f04169",
+  "revision_evidence": "Git archive ZIP comment; no inference from filename alone",
+  "also_inspected_revision": "510582eac6a115e72909ceeb74aec6fa83677b30",
+  "models_docs_compatibility_identical_in_both": true,
+  "checked_on": "2026-10-05",
+  "current_live_schema_verified": false,
+  "live_lookup_outcome": "GitHub repository API returned 404 for Form-OSS and Forma-OSS; public raw-source retrieval failed.",
+  "source_files": [
+    {
+      "path": "forma_core/workspaces/projects/models.py",
+      "sha256": "b09ea87bb20b6de24f4e46c749671654e696741f0633154aa81d84982d84f2be"
+    },
+    {
+      "path": "forma_core/workspaces/projects/mechanism_benchmarks.py",
+      "sha256": "6ce9f564bbae39a3e5f89acd0a6f02d95d69458a2eecf644442c59b8a3624f1b"
+    },
+    {
+      "path": "forma_core/workspaces/projects/solid_cad.py",
+      "sha256": "be949f8f12eff575c3b17c98f7348c24965648ee82e1e38b38d5605a44c88bf2"
+    },
+    {
+      "path": "forma_core/workspaces/projects/gear_benchmark.py",
+      "sha256": "350d894a6f0686b47663b40714f94be86ab8f7ca7a8b76749d339626ce3c10c0"
+    },
+    {
+      "path": "forma_core/config/compatibility.py",
+      "sha256": "01272a64c776b878a6dd64858652e9181a28f0f2ef8912a729b8c88c18c00080"
+    },
+    {
+      "path": "docs/hardware-ir.md",
+      "sha256": "0911b86de6b165eab9d6c4df2ede68c91a092debae96e192a57a3a4e627c2ce0"
+    }
+  ],
+  "schema_generation": "Unmodified HardwareIntermediateRepresentation.model_json_schema(mode=\"validation\")",
+  "scope": "Full JSON document structure and pinned Pydantic validators; not physics validation, hosted application import or design qualification.",
+  "pydantic_validation_record": "forma-model-check.json",
+  "schema_sha256": "571773e3def3e9fcae64b33e0c8a27524d3a4f661c385a2895124cefc916bd25",
+  "pydantic_version": "2.13.5",
+  "model_validation_result": "passed",
+  "local_round_trip_result": "passed",
+  "negative_cases_rejected": [
+    "bom_quantity",
+    "bom_price",
+    "unresolved_instance"
+  ],
+  "application_import_performed": false
+}

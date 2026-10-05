@@ -1,0 +1,117 @@
+[
+  {
+    "candidate_id": "FS-01",
+    "family": "fused silica",
+    "grade": "Corning 7980 0G",
+    "supplier": "Edmund Optics",
+    "part_number": "14-962",
+    "configuration": {
+      "diameter_mm": 25,
+      "thickness_mm": 2,
+      "clear_aperture_mm": 22.5,
+      "coating": "uncoated",
+      "surface_quality": "40-20",
+      "edge": "fine ground"
+    },
+    "evidence_ids": [
+      "E101",
+      "E102",
+      "E103",
+      "E104"
+    ],
+    "optical": {
+      "full_band_transmission_fraction": null,
+      "cutoff_nm": null,
+      "cutoff_definition": "No numeric UV-cutoff threshold supplied; catalog range is not cutoff or acceptance."
+    },
+    "qualification": {
+      "pointwise_T_280_400": "unknown",
+      "haze": "unknown",
+      "spectral_distortion": "unknown",
+      "installed_impact": "unknown",
+      "installed_seal": "unknown",
+      "outdoor_lifetime": "unknown"
+    },
+    "procurement_evidence": "E104",
+    "decision": "preferred prototype test article, conditional; no production release",
+    "decision_reason": "Exact optical-window configuration covers target in listed range, with traceable dimensions. Missing pointwise T and integration data prohibit passing hard gates."
+  },
+  {
+    "candidate_id": "PMMA-01",
+    "family": "PMMA",
+    "grade": "PLEXIGLAS GS clear 2458 (not SC)",
+    "supplier": "Material Factory / PLEXIGLAS fabricator",
+    "part_number": null,
+    "configuration": {
+      "proposed_diameter_mm": 25,
+      "nominal_sheet_thickness_mm": 3,
+      "coating": "none listed",
+      "finish": "smooth, both optical faces preserved",
+      "masking": "remove before measurement",
+      "edge": "machined, qualification pending"
+    },
+    "evidence_ids": [
+      "E201",
+      "E202",
+      "E203",
+      "E204",
+      "E205",
+      "E206"
+    ],
+    "optical": {
+      "full_band_transmission_fraction": null,
+      "cutoff_nm": null,
+      "cutoff_definition": "No numeric UV-cutoff threshold supplied; 315 nm point cannot establish the 280 nm edge."
+    },
+    "qualification": {
+      "pointwise_T_280_400": "unknown",
+      "haze": "unknown",
+      "spectral_distortion": "unknown",
+      "installed_impact": "unknown",
+      "installed_seal": "unknown",
+      "outdoor_lifetime": "unknown"
+    },
+    "procurement_evidence": "E206",
+    "decision": "retain conditional shortlist; prioritize if application is at 315 nm or a relaxed band",
+    "decision_reason": "Specific supplier optical point supports further testing, not whole-band qualification. New/aged matched spectral data required."
+  },
+  {
+    "candidate_id": "PC-01",
+    "family": "polycarbonate",
+    "grade": "TUFFAK UV clear",
+    "supplier": "Plaskolite",
+    "part_number": "83838702",
+    "configuration": {
+      "proposed_diameter_mm": 25,
+      "nominal_sheet_thickness_in": 0.118,
+      "stock_sheet_in": [
+        48,
+        96
+      ],
+      "finish": "clear sheet; optical flatness/roughness unknown",
+      "coating": "enhanced UV-resistant construction; chemistry and layer detail not disclosed",
+      "masking": "remove"
+    },
+    "evidence_ids": [
+      "E301",
+      "E302",
+      "D102"
+    ],
+    "optical": {
+      "full_band_transmission_fraction": null,
+      "cutoff_nm": null,
+      "cutoff_definition": "No UV transmission curve/cutoff definition retrieved for this exact SKU."
+    },
+    "qualification": {
+      "pointwise_T_280_400": "unknown",
+      "haze": "unknown",
+      "spectral_distortion": "unknown",
+      "installed_impact": "unknown",
+      "installed_seal": "unknown",
+      "outdoor_lifetime": "unknown"
+    },
+    "procurement_evidence": "E301",
+    "decision": "not admitted to a full-band optical-qualified shortlist; evidence blocked, not measured failure",
+    "decision_reason": "Mechanical/weathering marketing does not establish UV throughput. Obtain exact clear SKU 280–400 nm spectrum and test sample before optical ranking."
+  }
+]

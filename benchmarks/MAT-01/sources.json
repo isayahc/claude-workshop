@@ -1,0 +1,155 @@
+[
+  {
+    "source_id": "S01",
+    "title": "Issue 9 benchmark execution specification",
+    "url": "https://github.com/isayahc/claude-workshop/issues/9",
+    "origin": "User-authored specification",
+    "location": "Body; requirements, execution rules, acceptance criteria",
+    "limitations": "GitHub connector; not a measurement",
+    "retrieved_date": "2026-10-05",
+    "retention": "Stable URL and manual structured facts retained; supplier source binaries not retained",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S02",
+    "title": "Edmund Optics TECHSPEC #14-962",
+    "url": "https://www.edmundoptics.com/p/25mm-dia-2mm-thick-uncoated-lambda4-fused-silica-window/43291/",
+    "origin": "Direct supplier specifications",
+    "location": "Specifications; stock and quantity pricing; Technical Information",
+    "limitations": "Product-specific data; supplier range is not a guaranteed T(lambda) curve. Linked 3 mm typical spectrum is NOT the 2 mm product.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Stable URL and manual structured facts retained; supplier source binaries not retained",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S03",
+    "title": "Röhm PLEXIGLAS GS UV-transmitting 2458/2458 SC, ref 222-6",
+    "url": "https://www.materialfactory.de/_upl/_artikel/222_6_plexiglas_gs_uv_durchlaessig_farblos_2458_und_sc_de.pdf",
+    "origin": "Manufacturer-authored datasheet hosted by supplier",
+    "location": "p1 processing; p2 aging protocol/figure; p3 technical table",
+    "limitations": "Parsed PDF table rechecked; no curve digitized. The clipped revision footer is not interpreted as a date. Typical values are not a production-lot guarantee.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Stable URL and manual structured facts retained; supplier source binaries not retained",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S04",
+    "title": "Evonik PLEXIGLAS GS UV-transmitting ref 222-6, February 2015",
+    "url": "https://per-plex.de/wp-content/uploads/2019/03/PLEXIGLAS-GS-UV-durchlaessig-2485-SunActive.pdf",
+    "origin": "Manufacturer-authored historical datasheet hosted by distributor",
+    "location": "p2 aging protocol and formats; p3 table",
+    "limitations": "Historical corroboration of tabulated 315 nm and material data. Screenshot fetch failed. Current formulation equivalence is not certified. Historical reference recovered from the previous bundle, not re-fetched on October 5.",
+    "retrieved_date": "2026-10-04",
+    "retention": "Stable URL and manual structured facts retained; supplier source binaries not retained",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S05",
+    "title": "PLEXIGLAS GS/XT current product catalog",
+    "url": "https://www.plexiglas.de/de/produkte/plexiglas/plexiglas-gs-xt",
+    "origin": "Manufacturer product catalog",
+    "location": "UV-durchlässig: 2458 smooth / 2458 SC one side matt; cast sheet formats",
+    "limitations": "Catalog listing, not a production-lot certificate. Formats differ from older datasheets.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Stable URL and manual structured facts retained; supplier source binaries not retained",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S06",
+    "title": "Plaskolite TUFFAK UV catalog",
+    "url": "https://plaskolite.com/catalog/tuffak-uv",
+    "origin": "Manufacturer product catalog",
+    "location": "Description; Features; Stock Items, item 83838702",
+    "limitations": "No numeric UV spectrum, impact value, or price retrieved. SQ FT column shows 4608 for 48 x 96 in; not used as square feet.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Stable URL and manual structured facts retained; supplier source binaries not retained",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S07",
+    "title": "Material Factory GS 2458 3 mm quotation basis",
+    "url": "https://www.materialfactory.de/plexiglas-acrylglas/4288-gs-farblos",
+    "origin": "Direct seller commercial listing",
+    "location": "Materialstärken and Formzuschnitte verfügbar",
+    "limitations": "Opened listing says from EUR154.70/m². Earlier search snippet said EUR118.88/m²; retain conflict, use opened value, do not compute delivered cut-part cost.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Stable URL and manual structured facts retained; supplier source binaries not retained",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S08",
+    "title": "CAID model definitions",
+    "url": "https://github.com/caid-technologies/Form-OSS/blob/ffd6772d54fa410e46910890434572333026e395/forma_core/workspaces/projects/models.py",
+    "origin": "Unmodified Forma source recovered from git-archive snapshot; archive comment pins the commit",
+    "location": "Lines 1–151: PinDefinition, PartDefinition, ComponentInstance, BOMLineItem",
+    "limitations": "Pinned 0.2 source, also byte-identical for these files in snapshot 510582eac6a115e72909ceeb74aec6fa83677b30. Live repository lookup returned 404; compatibility with later code is not claimed.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Schema and source hashes retained in schema-provenance.json; reproduction accepts an authorized checkout of the pinned revision.",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S09",
+    "title": "CAID Hardware IR documentation",
+    "url": "https://github.com/caid-technologies/Form-OSS/blob/ffd6772d54fa410e46910890434572333026e395/docs/hardware-ir.md",
+    "origin": "Unmodified Forma source recovered from git-archive snapshot; archive comment pins the commit",
+    "location": "Top-level structure, key relationships, 0.2 migration",
+    "limitations": "Pinned 0.2 source, also byte-identical for these files in snapshot 510582eac6a115e72909ceeb74aec6fa83677b30. Live repository lookup returned 404; compatibility with later code is not claimed.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Schema and source hashes retained in schema-provenance.json; reproduction accepts an authorized checkout of the pinned revision.",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S10",
+    "title": "CAID current supported version",
+    "url": "https://github.com/caid-technologies/Form-OSS/blob/ffd6772d54fa410e46910890434572333026e395/forma_core/config/compatibility.py",
+    "origin": "Unmodified Forma source recovered from git-archive snapshot; archive comment pins the commit",
+    "location": "CURRENT_HARDWARE_IR_VERSION = 0.2",
+    "limitations": "Pinned 0.2 source, also byte-identical for these files in snapshot 510582eac6a115e72909ceeb74aec6fa83677b30. Live repository lookup returned 404; compatibility with later code is not claimed.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Schema and source hashes retained in schema-provenance.json; reproduction accepts an authorized checkout of the pinned revision.",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S11",
+    "title": "Orbital Studio MCP server",
+    "url": "https://github.com/isayahc/claude-workshop/blob/7b8260d299208076e58decb4f17256de096331cb/orbital_viewer/mcp_server.py",
+    "origin": "Repository source",
+    "location": "create_server; all five @server.tool definitions",
+    "limitations": "Base revision reference; the actual execution revision, package versions and implementation hashes are in each new run.json.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Stable URL and manual structured facts retained; supplier source binaries not retained",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S12",
+    "title": "Orbital Studio MCP scientific and protocol contract",
+    "url": "https://github.com/isayahc/claude-workshop/blob/7b8260d299208076e58decb4f17256de096331cb/docs/mcp.md",
+    "origin": "Repository documentation",
+    "location": "Tools and result contract; minimal example; scientific limitations",
+    "limitations": "Base revision reference; the actual execution revision, package versions and implementation hashes are in each new run.json.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Stable URL and manual structured facts retained; supplier source binaries not retained",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S13",
+    "title": "Orbital Studio package metadata",
+    "url": "https://github.com/isayahc/claude-workshop/blob/7b8260d299208076e58decb4f17256de096331cb/pyproject.toml",
+    "origin": "Repository metadata",
+    "location": "project.version; dependencies; optional-dependencies",
+    "limitations": "Base revision reference; the actual execution revision, package versions and implementation hashes are in each new run.json.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Stable URL and manual structured facts retained; supplier source binaries not retained",
+    "original_retrieved_date": "2026-10-04"
+  },
+  {
+    "source_id": "S14",
+    "title": "Recovered MAT-01 benchmark and additive patch",
+    "url": "https://github.com/isayahc/claude-workshop/issues/9",
+    "origin": "Earlier user-workspace deliverables, October 4, 2026",
+    "location": "recovery.json records archive, patch and original research-file hashes",
+    "limitations": "Previous library fallback is historical evidence, never relabeled as a new MCP run.",
+    "retrieved_date": "2026-10-05",
+    "retention": "Reviewed research migrated; obsolete source copies and generated results excluded from this PR."
+  }
+]

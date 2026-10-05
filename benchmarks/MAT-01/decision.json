@@ -1,0 +1,49 @@
+{
+  "material_decision": "Conditional",
+  "design_qualification": "Blocked",
+  "prototype_test_article": "FS-01",
+  "production_release": false,
+  "hard_gate_policy": "Any required unknown prevents qualification; a failed required gate rejects that configuration.",
+  "hard_gate_result": "No candidate has complete optical plus mechanical and environmental evidence.",
+  "preference_scoring": {
+    "applied": false,
+    "weights": null,
+    "reason": "No fully gated candidate set; numeric scores would hide consequential unknowns."
+  },
+  "sensor_weighted_metric": {
+    "evaluated": false,
+    "reason": "No wavelength-resolved matched T(lambda), detector response or incident spectrum."
+  },
+  "sensitivity": [
+    {
+      "change": "Full 280–400 nm with unspecified T minimum",
+      "outcome": "FS-01 preferred for prototype testing only; all unqualified."
+    },
+    {
+      "change": "Only 315 nm, required T no more than 80%, as-new normal-incidence screening",
+      "outcome": "PMMA-01 becomes a serious alternative on supplier point evidence. Confirm measurement geometry, lot, aging and mechanical requirements; no automatic installed pass."
+    },
+    {
+      "change": "High minimum throughput such as 95% across full band",
+      "outcome": "None qualifies from current evidence. Request exact UV-AR configuration and finished-part total T; per-surface reflectance is not total transmission."
+    },
+    {
+      "change": "High impact or unacceptable glass-fragment failure",
+      "outcome": "Do not accept FS-01 without protective mount/impact testing. Seek qualified sapphire or another specific alternative; no grade/part for sapphire evaluated in this run."
+    },
+    {
+      "change": "Tight cost or field-replacement limit",
+      "outcome": "Obtain matched delivered cut-part and mount quotes; sheet-area prices are not per-window cost."
+    },
+    {
+      "change": "Aperture larger than catalog clear aperture or broad angular field",
+      "outcome": "Re-size and repeat optical/angular and mechanical assessment."
+    }
+  ],
+  "minimal_next_action": "Specify whether 280 nm is mandatory and supply T_required(lambda), then request or measure as-finished 280–400 nm transmission for FS-01 and PMMA-01. Define impact/failure mode before committing the mount.",
+  "confidence": {
+    "prototype_priority": "moderate: exact silica optic is traceable and its advertised range contains the target; no pointwise guarantee",
+    "production_qualification": "insufficient: optical threshold, matched curves, impact and outdoor-life evidence are missing",
+    "orbital_contribution": "no demonstrated material-selection value; only software smoke coverage"
+  }
+}
