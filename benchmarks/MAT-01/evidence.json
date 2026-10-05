@@ -1,0 +1,400 @@
+[
+  {
+    "evidence_id": "E001",
+    "classification": "Observed",
+    "origin": "Issue specification, not physical observation",
+    "claim": "Initial target is an outdoor window spanning 280–400 nm.",
+    "source_ids": [
+      "S01"
+    ],
+    "units": "nm",
+    "conditions": "User issue scope",
+    "limitations": "Full-band versus selected-wavelength requirement unresolved.",
+    "decision_use": true,
+    "values": [
+      280,
+      400
+    ]
+  },
+  {
+    "evidence_id": "A01",
+    "classification": "Assumed",
+    "origin": "Benchmark design choice",
+    "claim": "Use 20 mm clear aperture and nominal 25 mm discs to make a concrete comparison.",
+    "source_ids": [
+      "S01"
+    ],
+    "units": "mm",
+    "conditions": "Provisional geometry only",
+    "limitations": "User has not specified aperture or dimensions; change may alter mount and winner.",
+    "decision_use": true,
+    "values": {
+      "clear_aperture": 20,
+      "diameter": 25
+    }
+  },
+  {
+    "evidence_id": "A02",
+    "classification": "Assumed",
+    "origin": "Benchmark design choice",
+    "claim": "Screen uncoated smooth faces at normal incidence.",
+    "source_ids": [
+      "S01"
+    ],
+    "units": "degree / configuration",
+    "conditions": "Initial prototype comparison",
+    "limitations": "Not final sensor field of view or final coating decision.",
+    "decision_use": true,
+    "values": {
+      "AOI_deg": 0
+    }
+  },
+  {
+    "evidence_id": "A03",
+    "classification": "Assumed",
+    "origin": "Proposed mechanical concept",
+    "claim": "Use a replaceable perimeter gasket/retainer, keep sealant out of the aperture and avoid direct hard point loading.",
+    "source_ids": [
+      "S01"
+    ],
+    "units": "configuration",
+    "conditions": "Unvalidated design concept",
+    "limitations": "No named seal material, compression, preload, impact or leakage qualification.",
+    "decision_use": true,
+    "values": null
+  },
+  {
+    "evidence_id": "E101",
+    "classification": "External knowledge",
+    "origin": "Edmund exact part listing",
+    "claim": "Part #14-962 uses Corning 7980 0G, uncoated; 25 +0/-0.10 mm diameter, 2 ±0.10 mm thickness, 22.5 mm clear aperture, 40-20 faces and fine-ground edges.",
+    "source_ids": [
+      "S02"
+    ],
+    "units": "mm / surface quality",
+    "conditions": "Catalog specifications for exact part",
+    "limitations": "Optical polish and dimensions do not establish installed impact or service life.",
+    "decision_use": true,
+    "values": {
+      "diameter_mm": 25,
+      "diameter_tol_plus_mm": 0,
+      "diameter_tol_minus_mm": 0.1,
+      "thickness_mm": 2,
+      "thickness_tol_mm": 0.1,
+      "clear_aperture_mm": 22.5
+    }
+  },
+  {
+    "evidence_id": "E102",
+    "classification": "External knowledge",
+    "origin": "Edmund exact part and technical-information caption",
+    "claim": "Listed wavelength range is 200–2200 nm; typical uncoated spectral data in the family section applies to 3 mm, not the selected 2 mm part.",
+    "source_ids": [
+      "S02"
+    ],
+    "units": "nm / mm",
+    "conditions": "Uncoated configuration",
+    "limitations": "Range is not T>=x%. Linked raw spectrum fetch failed; no rescaling or band average computed.",
+    "decision_use": true,
+    "values": {
+      "catalog_range_nm": [
+        200,
+        2200
+      ],
+      "typical_curve_thickness_mm": 3
+    }
+  },
+  {
+    "evidence_id": "E103",
+    "classification": "External knowledge",
+    "origin": "Edmund product material table",
+    "claim": "Listed density 2.20 g/cm³, Young modulus 73 GPa, CTE 0.52e-6/K at +5…+35 °C.",
+    "source_ids": [
+      "S02"
+    ],
+    "units": "g/cm³ / GPa / 1/K",
+    "conditions": "Grade 7980 0G; conditions as stated",
+    "limitations": "No strength distribution or assembled fracture limit; no extrapolation of CTE beyond its interval.",
+    "decision_use": true,
+    "values": {
+      "density_g_cm3": 2.2,
+      "young_modulus_GPa": 73,
+      "cte_per_K": 5.2e-07,
+      "cte_interval_C": [
+        5,
+        35
+      ]
+    }
+  },
+  {
+    "evidence_id": "E104",
+    "classification": "External knowledge",
+    "origin": "Supplier commercial listing",
+    "claim": "Displayed #14-962 price USD127 each for quantities 1–5; opened page displayed 12 in stock.",
+    "source_ids": [
+      "S02"
+    ],
+    "units": "USD / each / count",
+    "conditions": "Supplier page retrieved 2026-10-05; cached/dynamic catalog, not a firm quotation",
+    "limitations": "Cached/dynamic listing, not a quote or stock reservation. Tax, shipping, mount and tests excluded; earlier retrieval showed a different stock count.",
+    "decision_use": true,
+    "values": {
+      "unit_price": 127,
+      "currency": "USD",
+      "price_quantity_range": [
+        1,
+        5
+      ],
+      "displayed_stock": 12
+    }
+  },
+  {
+    "evidence_id": "E201",
+    "classification": "External knowledge",
+    "origin": "PLEXIGLAS catalog and supplier",
+    "claim": "GS clear 2458 is the smooth UV-transmitting grade; 2458 SC has one matt face. The seller lists uncoated 3 mm stock.",
+    "source_ids": [
+      "S05",
+      "S07"
+    ],
+    "units": "mm / configuration",
+    "conditions": "Film removed for measurement/use; same exact grade not generic PMMA",
+    "limitations": "Cut diameter/edge finish and tolerance need a fabrication quote; additive formulation not disclosed.",
+    "decision_use": true,
+    "values": {
+      "sheet_thickness_mm": 3
+    }
+  },
+  {
+    "evidence_id": "E202",
+    "classification": "External knowledge",
+    "origin": "Manufacturer datasheet technical table",
+    "claim": "At 315 nm, 3 mm 2458 is listed at >=80% transmission; visible-band entry 380–780 nm is >=90%.",
+    "source_ids": [
+      "S03"
+    ],
+    "units": "% / nm",
+    "conditions": "Table typical conditions 23 °C, 50%RH; DIN5036 part3",
+    "limitations": "Typical manufacturer values, not a guaranteed 280–400 nm curve or lot certificate. Parsed table rechecked; no spectral curve digitization.",
+    "decision_use": true,
+    "values": {
+      "wavelength_nm": 315,
+      "transmission_lower_bound_percent": 80,
+      "thickness_mm": 3,
+      "visible_interval_nm": [
+        380,
+        780
+      ],
+      "visible_transmission_percent": 90
+    }
+  },
+  {
+    "evidence_id": "E203",
+    "classification": "External knowledge",
+    "origin": "Manufacturer datasheet material table",
+    "claim": "3 mm 2458 table: density 1.19 g/cm³; tensile >=60 MPa; modulus >=2500 MPa; linear CTE 7e-5/K over 0–50 °C.",
+    "source_ids": [
+      "S03"
+    ],
+    "units": "g/cm³ / MPa / 1/K",
+    "conditions": "23 °C/50%RH except CTE interval; ISO1183, ISO527, DIN53752-A",
+    "limitations": "Typical material entries, not designed disc strength, creep or impact limits.",
+    "decision_use": true,
+    "values": {
+      "density_g_cm3": 1.19,
+      "tensile_MPa_lower": 60,
+      "young_modulus_MPa_lower": 2500,
+      "cte_per_K": 7e-05,
+      "cte_interval_C": [
+        0,
+        50
+      ]
+    }
+  },
+  {
+    "evidence_id": "E204",
+    "classification": "External knowledge",
+    "origin": "Manufacturer aging-protocol caption",
+    "claim": "Datasheet describes 3 and 8 mm 2458 spectra before and after 1000 hours under a 160 W Cosmolux VHR lamp.",
+    "source_ids": [
+      "S03"
+    ],
+    "units": "hour / W / mm",
+    "conditions": "Named artificial lamp exposure, not outdoor exposure",
+    "limitations": "Wattage is lamp rating, not specimen irradiance or absorbed dose. Graph inaccessible to screenshot; no numeric aging change or outdoor equivalence asserted.",
+    "decision_use": true,
+    "values": {
+      "lamp_rating_W": 160,
+      "exposure_h": 1000
+    }
+  },
+  {
+    "evidence_id": "E205",
+    "classification": "External knowledge",
+    "origin": "Manufacturer fabrication and cleaning advice",
+    "claim": "2458 can be sawn/milled/polished; avoid acrylic-damaging cleaners and control machining stress.",
+    "source_ids": [
+      "S03"
+    ],
+    "units": "process",
+    "conditions": "Manufacturer guidance for these sheet grades",
+    "limitations": "Final sealant/cleaner compatibility and post-machining optical response remain untested.",
+    "decision_use": true,
+    "values": null
+  },
+  {
+    "evidence_id": "E206",
+    "classification": "External knowledge",
+    "origin": "Material Factory commercial page",
+    "claim": "3 mm GS2458 opened listing starts at EUR154.70/m².",
+    "source_ids": [
+      "S07"
+    ],
+    "units": "EUR/m²",
+    "conditions": "Opened seller listing rechecked 2026-10-05; prior snippet conflict retained as history",
+    "limitations": "Earlier search snippet EUR118.88/m² conflicts. Use opened listing only as indicative; no minimum order, tax, shipping, cutting or delivered disc quote verified.",
+    "decision_use": true,
+    "values": {
+      "starting_price_per_m2": 154.7,
+      "currency": "EUR",
+      "earlier_snippet_price_per_m2": 118.88
+    }
+  },
+  {
+    "evidence_id": "E301",
+    "classification": "External knowledge",
+    "origin": "Plaskolite exact SKU listing",
+    "claim": "TUFFAK UV clear item 83838702 is listed at 0.118 in thickness and 48 x 96 in sheet size, printed/plain masking.",
+    "source_ids": [
+      "S06"
+    ],
+    "units": "inch / configuration",
+    "conditions": "Select this exact clear grade, proposed 25 mm cut disc",
+    "limitations": "Nominal sheet thickness, no tolerance or optical polish; UV-resistant layer/additive detail not disclosed.",
+    "decision_use": true,
+    "values": {
+      "thickness_in": 0.118,
+      "sheet_size_in": [
+        48,
+        96
+      ]
+    }
+  },
+  {
+    "evidence_id": "E302",
+    "classification": "External knowledge",
+    "origin": "Plaskolite product description",
+    "claim": "TUFFAK UV is advertised for outdoor weatherability, impact resistance and enhanced UV resistance.",
+    "source_ids": [
+      "S06"
+    ],
+    "units": "qualitative",
+    "conditions": "Grade-specific marketing statements",
+    "limitations": "No retrieved T(lambda), quantitative impact or aged spectral data; neither measured optical failure nor demonstrated full-band pass.",
+    "decision_use": true,
+    "values": null
+  },
+  {
+    "evidence_id": "E401",
+    "classification": "Observed",
+    "origin": "Unmodified archived Forma source, inspected and loaded locally",
+    "claim": "Hardware IR 0.2 separates part definitions, physical instances and BOM rows; the actual Pydantic model validates the scoped window proposal.",
+    "source_ids": [
+      "S08",
+      "S09",
+      "S10"
+    ],
+    "units": "schema version / relationship",
+    "conditions": "Form-OSS commit ffd6772d54fa410e46910890434572333026e395",
+    "limitations": "Schema validation is structural, not optical/mechanical qualification or a remote application import. Live current-branch equivalence is unknown.",
+    "decision_use": true,
+    "values": null
+  },
+  {
+    "evidence_id": "E402",
+    "classification": "Observed",
+    "origin": "Pinned Orbital source inspection",
+    "claim": "Current MCP server exposes five tools; each new run captures initialize, tools/list and actual tool responses.",
+    "source_ids": [
+      "S11",
+      "S12",
+      "S13"
+    ],
+    "units": "tool names / version",
+    "conditions": "Orbital Studio 0.1.0 at 3d326f4d516bd6851c6e6eeb8cc68b1a0f361800",
+    "limitations": "Inventory and protocol success do not establish any candidate material property.",
+    "decision_use": false,
+    "values": null
+  },
+  {
+    "evidence_id": "D101",
+    "classification": "Derived",
+    "origin": "reproduce.py derived.json",
+    "claim": "Nominal disc masses calculated from pi*(D/2)^2*t*rho/1000, with dimensions in mm.",
+    "source_ids": [
+      "S02",
+      "S03"
+    ],
+    "units": "g",
+    "conditions": "Ideal full circular disc, excludes bevels, tolerances, gasket and coatings",
+    "limitations": "Planning comparison only, not weighed products; PMMA cut geometry is assumed.",
+    "decision_use": true,
+    "values": {
+      "inputs_evidence_ids": [
+        "E101",
+        "E103",
+        "E201",
+        "E203",
+        "A01"
+      ]
+    }
+  },
+  {
+    "evidence_id": "D102",
+    "classification": "Derived",
+    "origin": "reproduce.py derived.json",
+    "claim": "PC nominal thickness conversion: 0.118 in x 25.4 mm/in.",
+    "source_ids": [
+      "S06"
+    ],
+    "units": "mm",
+    "conditions": "Exact unit conversion of nominal catalog dimension",
+    "limitations": "Does not imply dimensional tolerance or measured thickness.",
+    "decision_use": true,
+    "values": {
+      "inputs_evidence_ids": [
+        "E301"
+      ]
+    }
+  },
+  {
+    "evidence_id": "O501",
+    "classification": "Observed",
+    "origin": "Actual MCP execution recorded by orbital_viewer.benchmark",
+    "claim": "The current stdio MCP recorder exercises synthetic fixtures; raw responses and exported files are captured in run.json.",
+    "source_ids": [
+      "S12",
+      "S13"
+    ],
+    "units": "source-defined amplitude / eV / nm / dimensionless oscillator strength",
+    "conditions": "Each new run must succeed and pass hash/response checks; exact revision and counts are recorded dynamically",
+    "limitations": "Smoke tests only, excluded from all material-selection evidence.",
+    "decision_use": false,
+    "values": null
+  },
+  {
+    "evidence_id": "O502",
+    "classification": "Observed",
+    "origin": "Current recorder and recovered prior-work log",
+    "claim": "Run manifest records installed package versions and source hashes; earlier missing-dependency probes belong to the historical bundle.",
+    "source_ids": [
+      "S13",
+      "S14"
+    ],
+    "units": "exit code / stderr",
+    "conditions": "Current and historical execution outcomes are kept separate",
+    "limitations": "No mocked calls or library fallback are counted as MCP execution.",
+    "decision_use": false,
+    "values": null
+  }
+]

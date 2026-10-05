@@ -1,0 +1,174 @@
+[
+  {
+    "requirement_id": "R01",
+    "requirement": "Spectral coverage",
+    "value": [
+      280,
+      400
+    ],
+    "units": "nm",
+    "source": "S01",
+    "status": "initial target",
+    "role": "hard scope, subject to clarification",
+    "consequence_if_unknown": "A narrower band could change the selection; confirm full band versus discrete wavelengths."
+  },
+  {
+    "requirement_id": "R02",
+    "requirement": "Pointwise total forward transmission minimum",
+    "value": null,
+    "units": "fraction",
+    "source": "not supplied",
+    "status": "unknown",
+    "role": "hard limit unresolved",
+    "consequence_if_unknown": "No candidate can be declared optically qualified until T_required(lambda) is defined."
+  },
+  {
+    "requirement_id": "R03",
+    "requirement": "Allowed haze / scattered fraction",
+    "value": null,
+    "units": "%",
+    "source": "not supplied",
+    "status": "unknown",
+    "role": "hard limit unresolved",
+    "consequence_if_unknown": "Sensor acceptance angle and loss budget may reject diffuse or weathered material."
+  },
+  {
+    "requirement_id": "R04",
+    "requirement": "Permitted spectral distortion",
+    "value": null,
+    "units": "relative change in T(lambda)",
+    "source": "not supplied",
+    "status": "unknown",
+    "role": "hard limit unresolved",
+    "consequence_if_unknown": "Average transmission must not hide a bad wavelength or calibration bias."
+  },
+  {
+    "requirement_id": "R05",
+    "requirement": "Detector responsivity / incident spectrum",
+    "value": null,
+    "units": "A/W and W/m²/nm",
+    "source": "not supplied",
+    "status": "unknown",
+    "role": "metric input unresolved",
+    "consequence_if_unknown": "No sensor-weighted throughput computed."
+  },
+  {
+    "requirement_id": "R06",
+    "requirement": "Clear aperture",
+    "value": 20,
+    "units": "mm",
+    "source": "A01",
+    "status": "provisional assumption",
+    "role": "screening geometry only",
+    "consequence_if_unknown": "Change geometry and load analysis if required aperture exceeds 20 mm. Not a user requirement."
+  },
+  {
+    "requirement_id": "R07",
+    "requirement": "Nominal outer diameter",
+    "value": 25,
+    "units": "mm",
+    "source": "A01",
+    "status": "provisional assumption",
+    "role": "screening geometry only",
+    "consequence_if_unknown": "Based on available silica part; polymer disc cut geometry is proposed, not purchased."
+  },
+  {
+    "requirement_id": "R08",
+    "requirement": "Candidate thicknesses",
+    "value": {
+      "fused_silica": 2,
+      "PMMA": 3,
+      "polycarbonate_in": 0.118
+    },
+    "units": "mm except explicitly in",
+    "source": "E101/E201/E301",
+    "status": "candidate configuration",
+    "role": "not a common-thickness comparison",
+    "consequence_if_unknown": "No optical thickness normalization or stiffness-equivalence claim."
+  },
+  {
+    "requirement_id": "R09",
+    "requirement": "Incidence angle",
+    "value": 0,
+    "units": "degree",
+    "source": "A02",
+    "status": "provisional assumption",
+    "role": "initial test condition",
+    "consequence_if_unknown": "Actual field of view and off-axis response may reverse ranking."
+  },
+  {
+    "requirement_id": "R10",
+    "requirement": "Coating / optical finish",
+    "value": {
+      "initial_coating": "uncoated",
+      "finish": "clear smooth optical faces"
+    },
+    "units": "configuration",
+    "source": "A02",
+    "status": "provisional assumption",
+    "role": "preference, not final acceptance",
+    "consequence_if_unknown": "AR coating may become necessary for a high transmission threshold; exact coating qualification required."
+  },
+  {
+    "requirement_id": "R11",
+    "requirement": "Outdoor temperature / humidity / sunlight dose",
+    "value": null,
+    "units": "°C / %RH / J/m² by wavelength",
+    "source": "S01 outdoor; quantities not supplied",
+    "status": "unknown",
+    "role": "qualification requirement unresolved",
+    "consequence_if_unknown": "No environmental-life equivalence inferred from a tanning lamp test."
+  },
+  {
+    "requirement_id": "R12",
+    "requirement": "Service life / maintenance interval",
+    "value": null,
+    "units": "year / month",
+    "source": "not supplied",
+    "status": "unknown",
+    "role": "qualification requirement unresolved",
+    "consequence_if_unknown": "Replacement economics and aging acceptance cannot be scored."
+  },
+  {
+    "requirement_id": "R13",
+    "requirement": "Cleaning agents and abrasion exposure",
+    "value": null,
+    "units": "agent / concentration / cycles",
+    "source": "not supplied",
+    "status": "unknown",
+    "role": "qualification requirement unresolved",
+    "consequence_if_unknown": "Chemical crazing, contamination and scratches need component tests."
+  },
+  {
+    "requirement_id": "R14",
+    "requirement": "Impact / pressure / safety failure mode",
+    "value": null,
+    "units": "J / Pa / failure criterion",
+    "source": "not supplied",
+    "status": "unknown",
+    "role": "hard mechanical limit unresolved",
+    "consequence_if_unknown": "No fracture load, safety factor, or hail resistance is claimed."
+  },
+  {
+    "requirement_id": "R15",
+    "requirement": "Housing / seal / thermal compatibility",
+    "value": {
+      "concept": "replaceable perimeter gasket and retaining ring"
+    },
+    "units": "configuration",
+    "source": "A03",
+    "status": "provisional assumption",
+    "role": "integration concept only",
+    "consequence_if_unknown": "Seal material, compression, torque and differential expansion unresolved; no IP rating."
+  },
+  {
+    "requirement_id": "R16",
+    "requirement": "Manufacturing / quantity / budget / lead time",
+    "value": null,
+    "units": "process / count / currency / days",
+    "source": "not supplied",
+    "status": "unknown",
+    "role": "procurement constraints unresolved",
+    "consequence_if_unknown": "Unit window pricing cannot be compared directly with sheet price per area."
+  }
+]

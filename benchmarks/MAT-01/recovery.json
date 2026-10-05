@@ -1,0 +1,37 @@
+{
+  "prior_work_date": "2026-10-04",
+  "recovered_on": "2026-10-05",
+  "archive_sha256": "a489ad201391ebadd6343455a3055a8a3b6b309545a1f5bdcde686526ea1ed6b",
+  "patch_sha256": "50625ffc6c1e9aef4e8b634dd1744f1f273bd15d8938b789072ace6aaf60e8cd",
+  "retained_inputs": [
+    {
+      "path": "requirements.json",
+      "recovered_sha256": "a07a7b203746d3ca49807be1a9415a8b8428fe010a4902254eb8dc508aab56eb"
+    },
+    {
+      "path": "candidates.json",
+      "recovered_sha256": "ea213bc3323c10625857944775faf6638db8de0c3538fd1c7a861b4b7bb71d57"
+    },
+    {
+      "path": "decision.json",
+      "recovered_sha256": "587de3f549b6bcced7bd54e5e805cefe7ae30f4563ceb9fc5b3b661490b2d2ab"
+    },
+    {
+      "path": "evidence.json",
+      "recovered_sha256": "51e33c28c4cf1279a52fdf9f6561ebb18139649c34570aeb15ab5c3bda3c6f52"
+    },
+    {
+      "path": "sources.json",
+      "recovered_sha256": "8f375f20556eb5a4a4c37e4196e1b688e759892cb271d2cae3ab2f85464844a4"
+    },
+    {
+      "path": "material-entry.proposed.json",
+      "recovered_sha256": "a65d025c8bd34322fc18453d71ca8f46d7f0d26c16cf77bd4202b2d9f2481a41"
+    },
+    {
+      "path": "friction.json",
+      "recovered_sha256": "b0782d2b7783d211c542bfb96a6e7f1b33c739a9823bcc0601e1020b4ec146b2"
+    }
+  ],
+  "migration": "Carry forward reviewed grade-specific research. Replace obsolete source snapshot/library-only replay with current actual MCP runner. Generated HTML and run records are CI artifacts, not committed source. Current research and schema checks are recorded separately."
+}

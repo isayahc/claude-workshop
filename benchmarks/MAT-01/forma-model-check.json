@@ -1,0 +1,199 @@
+{
+  "source_revision": "ffd6772d54fa410e46910890434572333026e395",
+  "pydantic_version": "2.13.5",
+  "unmodified_model_validation": "passed",
+  "evidence_and_nulls_preserved": true,
+  "local_serialization_round_trip": "passed",
+  "negative_cases_rejected": [
+    "bom_quantity",
+    "bom_price",
+    "unresolved_instance"
+  ],
+  "loaded_source_modules": [
+    {
+      "path": "forma_core/__init__.py",
+      "sha256": "73ede313160a2efbffef495d499f99bf82069aaeade624ff3f42cce880f222f5"
+    },
+    {
+      "path": "forma_core/_version.py",
+      "sha256": "df4299c91d47690a25dd54ae8655578a5e8254c027ff8723ea7948749a0d4993"
+    },
+    {
+      "path": "forma_core/config/__init__.py",
+      "sha256": "fe453fe7fceba6183ddf118e4fb4d292818835f3b255bee18187435a624941e8"
+    },
+    {
+      "path": "forma_core/config/environment.py",
+      "sha256": "9ad927be82a9f396e84ace0cb288cde53f4c94d18696036a2a58b2bbeb624c4b"
+    },
+    {
+      "path": "forma_core/jobs/__init__.py",
+      "sha256": "aa90b46d7bb3bd0bf6754f853aaec8c5e25d26695b2b04ee3bffbb4df31adfd9"
+    },
+    {
+      "path": "forma_core/jobs/schema.py",
+      "sha256": "a486a850322f72271f471c9bfbe8801df4a13410d58e785b22224c34aff5d373"
+    },
+    {
+      "path": "forma_core/opencode/__init__.py",
+      "sha256": "813aa932aa9b3e4eb98107a0d7e737e9ce4efa1a2d82990e332b033289b59ab4"
+    },
+    {
+      "path": "forma_core/opencode/models.py",
+      "sha256": "15e5a9cc61c1c67585916ee3598d22bbe87df3723dafac97fdcb85911d4d03f5"
+    },
+    {
+      "path": "forma_core/opencode/schema.py",
+      "sha256": "72912ff7bec7aa0f3ab53d88608f860ec94efc5c59cc8cfed0f529ef9d6b2d09"
+    },
+    {
+      "path": "forma_core/persistence/__init__.py",
+      "sha256": "be9c2cfff05c6336b292dce0cbfff382d216272580191efddfa43f44dd920558"
+    },
+    {
+      "path": "forma_core/persistence/base.py",
+      "sha256": "7ee6239f951baf84a995f5acc06c1616856137458b75354856dc58037998f4e7"
+    },
+    {
+      "path": "forma_core/persistence/models.py",
+      "sha256": "ad7353ebcbd1a4080317e0e59358f3ce4bad79939ff31f92dc8b5f35cebbf8db"
+    },
+    {
+      "path": "forma_core/persistence/repositories/__init__.py",
+      "sha256": "687f34e8878ffd5125c20a085b2d354542df571e5c028019d5768a123339cad3"
+    },
+    {
+      "path": "forma_core/persistence/repositories/base.py",
+      "sha256": "3f5da22d3b142ec2946ed228c40e88bfbe84e605b890ecabfe18a5fdc33c1a45"
+    },
+    {
+      "path": "forma_core/persistence/repositories/sqlite.py",
+      "sha256": "40cdc2b8ad8ee917d76f3c017714931575292e92e4882b46ca44a0df9958a8b3"
+    },
+    {
+      "path": "forma_core/persistence/repositories/supabase.py",
+      "sha256": "57bd5259626e2cb2b05ebd3c4fb71eb39d1fddec749b27bfaa1c2655650a7c93"
+    },
+    {
+      "path": "forma_core/persistence/schema.py",
+      "sha256": "f52b0d70057192712097aa01c1ebace14b803033c1f22c78d593bcc59ad15c3a"
+    },
+    {
+      "path": "forma_core/validation.py",
+      "sha256": "05e63e9fab53d5cf22b7b172cd051f49817e979c37611d8a66762e724a20df31"
+    },
+    {
+      "path": "forma_core/workspaces/__init__.py",
+      "sha256": "cc6f721c53b5bb4b31d48f5866a942a22bc81706eadc3c07fe28d8a9e18c64c2"
+    },
+    {
+      "path": "forma_core/workspaces/chats/__init__.py",
+      "sha256": "7ceee99f9a670c42f9871f5e2e490769b360b6a5a4cbf2f2c65051e37eddd204"
+    },
+    {
+      "path": "forma_core/workspaces/chats/models.py",
+      "sha256": "e686c3abc9bf4c84487248f5cf51b1c2e070f902e83cf81a49af7c09630fa131"
+    },
+    {
+      "path": "forma_core/workspaces/design_briefs/__init__.py",
+      "sha256": "325b5299ec6e84ea2ee73b451e1f541ccc9d228fa6b6061fd60cb39ea76b63bd"
+    },
+    {
+      "path": "forma_core/workspaces/design_briefs/models.py",
+      "sha256": "6be1c2a4a02b8d915bfd2b2d5e4ac7a720bf507a2b823ca5bb09d5c102365c9c"
+    },
+    {
+      "path": "forma_core/workspaces/design_briefs/references.py",
+      "sha256": "4557757cdbf18f7fe748fdabfd12ea94d3bf76ff00abca5d698cf2ed33d6560b"
+    },
+    {
+      "path": "forma_core/workspaces/models.py",
+      "sha256": "4c2648b079e6a78fc7db88c6b8883b46a01550ee84289148e63bd10d144f5558"
+    },
+    {
+      "path": "forma_core/workspaces/projects/__init__.py",
+      "sha256": "d43f108ac3d6fee918765e5d30c0f9358c429285f4a3418eea9bd3e68f91027f"
+    },
+    {
+      "path": "forma_core/workspaces/projects/context_governance.py",
+      "sha256": "dbfd32b3bc19eb162200830cd571307b45ac98325d34e59b3fbb39ea4ebb4ba8"
+    },
+    {
+      "path": "forma_core/workspaces/projects/fabrication/__init__.py",
+      "sha256": "15d0a2e985d132f28c23b22c534d26d1a40c327dcff9d9fae7364c845155695a"
+    },
+    {
+      "path": "forma_core/workspaces/projects/fabrication/models.py",
+      "sha256": "5cd98ee3bc549363c1836b08dc447c326fb22014ad5f729e2014c62d9c11bde2"
+    },
+    {
+      "path": "forma_core/workspaces/projects/fabrication/printer_config.py",
+      "sha256": "132de724cf9da95c54cb53c67b5a396a0e2f3611b188850111c9b3926bfa41ec"
+    },
+    {
+      "path": "forma_core/workspaces/projects/fabrication/slicers/__init__.py",
+      "sha256": "fe64fbdd2adf1f4097188e065f4568958b975ef1e1bf6973b45d3725737031d6"
+    },
+    {
+      "path": "forma_core/workspaces/projects/fabrication/slicers/base.py",
+      "sha256": "d040a665a540793e5f67359a59594ba6327de267e8aa2e675b405ab466edcc7b"
+    },
+    {
+      "path": "forma_core/workspaces/projects/fabrication/slicers/cura.py",
+      "sha256": "be519a7989f22a53c468afd763286ad8d354edf4907ca9014f247c7c5166219f"
+    },
+    {
+      "path": "forma_core/workspaces/projects/fabrication/slicers/orca.py",
+      "sha256": "b57e19cd7010a353d95c2bf45d50fce97354d4d716d7bc5665622745377683b0"
+    },
+    {
+      "path": "forma_core/workspaces/projects/fabrication/slicing.py",
+      "sha256": "6b6b35ea2e7e3c3b7a9b071c916d5f3b5f0b3da1e18c22d8ad6f23797694c362"
+    },
+    {
+      "path": "forma_core/workspaces/projects/fabrication/validation.py",
+      "sha256": "512eeed738d92bcee57689e4923947c10bf28071937f6f1eed22073f72d6f8fc"
+    },
+    {
+      "path": "forma_core/workspaces/projects/gear_benchmark.py",
+      "sha256": "350d894a6f0686b47663b40714f94be86ab8f7ca7a8b76749d339626ce3c10c0"
+    },
+    {
+      "path": "forma_core/workspaces/projects/identity.py",
+      "sha256": "b5a2165b91e071e7a56899388de0d528acbfe65180541a46cd6170716e39f9ac"
+    },
+    {
+      "path": "forma_core/workspaces/projects/manifest.py",
+      "sha256": "d7e35a5b20caa02946e139c107cc2ceff93eb58977d1db10d0526652a146bc0f"
+    },
+    {
+      "path": "forma_core/workspaces/projects/mechanism_benchmarks.py",
+      "sha256": "6ce9f564bbae39a3e5f89acd0a6f02d95d69458a2eecf644442c59b8a3624f1b"
+    },
+    {
+      "path": "forma_core/workspaces/projects/models.py",
+      "sha256": "b09ea87bb20b6de24f4e46c749671654e696741f0633154aa81d84982d84f2be"
+    },
+    {
+      "path": "forma_core/workspaces/projects/outcomes.py",
+      "sha256": "040e065dd7398e6c1b6caa8010033fd53f6c1c6e7a67c50ee4f7025f69e8ac30"
+    },
+    {
+      "path": "forma_core/workspaces/projects/resolver.py",
+      "sha256": "9abc60cadde93ee6a6e64ed7622bbc9f945c8f1db7cc5bbecbd1300d1be040aa"
+    },
+    {
+      "path": "forma_core/workspaces/projects/solid_cad.py",
+      "sha256": "be949f8f12eff575c3b17c98f7348c24965648ee82e1e38b38d5605a44c88bf2"
+    },
+    {
+      "path": "forma_core/workspaces/projects/state.py",
+      "sha256": "00ed3c42f249a6cdf57c7c255a192e800900cfe82af9fc7019917407db68fb8c"
+    }
+  ],
+  "schema_sha256": "571773e3def3e9fcae64b33e0c8a27524d3a4f661c385a2895124cefc916bd25",
+  "proposal_input_sha256": "32d52f4e1e73e5494de68adb31dab6f1390944accb2e5f3fc8adad767e361cab",
+  "serialized_proposal_sha256": "751595781b26381d5892aefd0b21f2e05d1de2207bf11a36028d463cc22c7c52",
+  "caid_import_performed": false,
+  "production_release": false
+}

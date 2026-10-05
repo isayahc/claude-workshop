@@ -1,0 +1,96 @@
+{
+  "schema_version": "1",
+  "benchmark_id": "MAT-01",
+  "evidence_scope": "synthetic_fixture",
+  "input_source_revision": "3d326f4d516bd6851c6e6eeb8cc68b1a0f361800",
+  "purpose": "Actual MCP smoke tests only; synthetic molecular outputs are excluded from bulk window material evidence.",
+  "assumptions": [
+    {
+      "classification": "Assumed",
+      "parameter": "Gaussian FWHM",
+      "value": 0.18,
+      "unit": "eV",
+      "reason": "Repository example display setting, not a measured material linewidth"
+    },
+    {
+      "classification": "Assumed",
+      "parameter": "Orbital absolute isovalue",
+      "value": 0.5,
+      "unit": "source-defined amplitude",
+      "reason": "Repository example display setting; synthetic field, no real orbital assignment"
+    }
+  ],
+  "inputs": [
+    {
+      "filename": "transitions.csv",
+      "provenance": "examples/mcp/transitions.csv; docs/mcp.md labels all example samples synthetic parser/visualization fixtures",
+      "source_blob_sha1": "01aeb2d1bf9196d44e3c85267c84fcab63ae61e1"
+    },
+    {
+      "filename": "synthetic-orca.out",
+      "provenance": "examples/mcp/synthetic-orca.out; synthetic ORCA parser fixture, not an electronic-structure calculation",
+      "source_blob_sha1": "00a2e081755160edcdde57e45ba34ce8eb7fa1bc"
+    },
+    {
+      "filename": "signed-field.cube",
+      "provenance": "examples/mcp/signed-field.cube; synthetic scalar field, not a photoinitiator orbital or NTO",
+      "source_blob_sha1": "00360f0401245ef8fa2524e3079da0adfed44ea3"
+    }
+  ],
+  "calls": [
+    {
+      "name": "inspect_transitions",
+      "arguments": {
+        "filename": "transitions.csv"
+      }
+    },
+    {
+      "name": "inspect_transitions",
+      "arguments": {
+        "filename": "synthetic-orca.out"
+      }
+    },
+    {
+      "name": "broaden_spectrum",
+      "arguments": {
+        "filename": "transitions.csv",
+        "fwhm_ev": 0.18
+      }
+    },
+    {
+      "name": "export_spectrum",
+      "arguments": {
+        "filename": "transitions.csv",
+        "fwhm_ev": 0.18,
+        "format": "csv"
+      }
+    },
+    {
+      "name": "export_spectrum",
+      "arguments": {
+        "filename": "transitions.csv",
+        "fwhm_ev": 0.18,
+        "format": "html",
+        "x_unit": "nm"
+      }
+    },
+    {
+      "name": "inspect_cube",
+      "arguments": {
+        "filename": "signed-field.cube"
+      }
+    },
+    {
+      "name": "export_orbital",
+      "arguments": {
+        "filename": "signed-field.cube",
+        "isovalue": 0.5
+      }
+    }
+  ],
+  "unknown_quantities": [
+    "candidate_transmission_curve",
+    "qualified_window_material",
+    "outdoor_service_life_years"
+  ]
+}

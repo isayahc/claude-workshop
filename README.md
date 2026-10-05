@@ -111,6 +111,22 @@ three interactive HTML views, spectrum CSV, raw responses and provenance remain
 available. Choose a new output directory for another run. CI also publishes this
 directory as the `EDU-01-synthetic-evidence` artifact.
 
+### Select a UV protective window: MAT-01
+
+The [MAT-01 benchmark](benchmarks/MAT-01/README.md) compares specific fused-silica,
+PMMA and polycarbonate configurations for an outdoor 280–400 nm sensor. It keeps
+supplier evidence separate from actual MCP smoke tests and exports a proposal
+checked against pinned Forma Hardware IR 0.2. The material decision remains
+conditional; physical qualification and application import remain blocked.
+
+```bash
+python benchmarks/MAT-01/reproduce.py --output .benchmark-runs/MAT-01
+```
+
+The bundle includes raw MCP responses, research inputs, a conditional assessment,
+the proposed window/BOM JSON and source/artifact hashes. CI publishes the same
+bundle as `MAT-01-evidence`. Successful tool/schema checks do not qualify a window.
+
 ### Verification
 
 ```bash

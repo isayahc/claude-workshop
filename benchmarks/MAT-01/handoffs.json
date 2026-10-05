@@ -1,0 +1,42 @@
+[
+  {
+    "stage": "Requirements",
+    "from": "Requester",
+    "to": "Optical/mechanical engineer",
+    "before": "Initial 280–400 nm outdoor scope",
+    "after": "requirements.json",
+    "manual_step": "Define pointwise optical limits, field of view, loads, environment and service life; current unknowns retained."
+  },
+  {
+    "stage": "Supplier evidence",
+    "from": "Supplier pages and datasheets",
+    "to": "Benchmark author",
+    "before": "S02–S07 with source locations and dates",
+    "after": "evidence.json / candidates.json",
+    "manual_step": "Transcribe grade/configuration facts, retain conflicts, and classify every claim; no spectral digitization."
+  },
+  {
+    "stage": "Physical testing",
+    "from": "Supplier/test engineer",
+    "to": "Design reviewer",
+    "before": "Proposed FS-01 and PMMA-01 specimens",
+    "after": "Pending calibrated transmission/aging/impact/seal evidence",
+    "manual_step": "Request or measure matched finished configurations; this handoff has not been executed."
+  },
+  {
+    "stage": "Schema review",
+    "from": "Archived Forma source",
+    "to": "Benchmark author",
+    "before": "Pinned unmodified models and full dependency graph",
+    "after": "hardware-ir.schema.json / schema-provenance.json",
+    "manual_step": "Inspect schema and validate scoped proposal; executable recipe in verify_forma.py."
+  },
+  {
+    "stage": "CAID integration",
+    "from": "Benchmark evidence package",
+    "to": "Forma project owner",
+    "before": "hardware-ir.proposed.json with evidence IDs and release blocks",
+    "after": "Pending target-project merge and application round trip",
+    "manual_step": "Import into a reviewed target project, preserve nulls/evidence, and revalidate the current schema; no import performed."
+  }
+]

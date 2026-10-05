@@ -1,0 +1,147 @@
+{
+  "artifact_type": "schema_checked_hardware_ir_proposal",
+  "schema_version_inspected": "0.2",
+  "schema_repository": "caid-technologies/Form-OSS",
+  "schema_commit": "ffd6772d54fa410e46910890434572333026e395",
+  "schema_sources": [
+    "S08",
+    "S09",
+    "S10"
+  ],
+  "schema_validation": {
+    "status": "Complete",
+    "scope": "Pinned Hardware IR 0.2 structure and actual Pydantic validators; evidence in schema-provenance.json",
+    "current_live_schema_verified": false,
+    "scientific_qualification": false
+  },
+  "import_status": {
+    "status": "Blocked",
+    "reason": "No target Forma project or application import/round-trip performed. Local Pydantic serialization is not a hosted import."
+  },
+  "production_release": false,
+  "proposed_mapping": {
+    "hardware_ir_version": "0.2",
+    "part_definitions": [
+      {
+        "part_definition_id": "window_edmund_14_962",
+        "manufacturer": null,
+        "part_number": "14-962",
+        "name": "Edmund UV fused-silica protective window",
+        "category": "Mechanical / optical window",
+        "description": "Edmund supplied Corning 7980 0G, uncoated, 40-20; exact finished optic manufacturer not independently established. Conditional prototype only. Evidence E101–E104.",
+        "pins": [],
+        "dimensions_mm": {
+          "diameter": 25,
+          "thickness": 2,
+          "clear_aperture": 22.5
+        },
+        "datasheet_url": "https://www.edmundoptics.com/p/25mm-dia-2mm-thick-uncoated-lambda4-fused-silica-window/43291/",
+        "sourcing_url": "https://www.edmundoptics.com/p/25mm-dia-2mm-thick-uncoated-lambda4-fused-silica-window/43291/",
+        "sourcing_offers": [
+          {
+            "supplier": "Edmund Optics",
+            "unit_price": 127,
+            "currency": "USD",
+            "quantity_range": [
+              1,
+              5
+            ],
+            "retrieval_date": "2026-10-05",
+            "basis": "catalog not firm quote; mount/tax/shipping/test excluded",
+            "evidence_id": "E104"
+          }
+        ],
+        "unit_price": 127
+      }
+    ],
+    "components": [
+      {
+        "ref_des": "W1",
+        "part_definition_id": "window_edmund_14_962",
+        "rationale": "First full-band prototype test article, not optical/mechanical qualification. Evidence E101,E102 and assumptions A01–A03.",
+        "configuration": {
+          "material": {
+            "family": "fused silica",
+            "grade": "Corning 7980 0G"
+          },
+          "surface_quality": "40-20",
+          "coating": "uncoated",
+          "spectral_target_nm": [
+            280,
+            400
+          ],
+          "required_transmission_fraction": null,
+          "required_haze_percent": null,
+          "mounting": "Unvalidated replaceable perimeter gasket/retainer; no adhesive in aperture; no direct point load",
+          "environmental_and_impact_limits": "Unknown; do not release",
+          "evidence_refs": [
+            "E101",
+            "E102",
+            "E103",
+            "E104",
+            "A01",
+            "A02",
+            "A03"
+          ],
+          "qualification_status": "conditional prototype / not qualified"
+        }
+      }
+    ],
+    "bom": [
+      {
+        "line_id": "BOM-W1",
+        "part_definition_id": "window_edmund_14_962",
+        "instance_refs": [
+          "W1"
+        ],
+        "quantity": 1,
+        "manufacturer": null,
+        "part_number": "14-962",
+        "name": "Edmund UV fused-silica protective window",
+        "category": "Mechanical / optical window",
+        "unit_price": 127,
+        "extended_price": 127,
+        "sourcing_url": "https://www.edmundoptics.com/p/25mm-dia-2mm-thick-uncoated-lambda4-fused-silica-window/43291/",
+        "rationale": "Window only, does not include the housing, seal, retainer or qualification costs."
+      }
+    ],
+    "is_valid": false,
+    "overview": {
+      "title": "MAT-01 conditional UV protective-window prototype",
+      "description": "Window-only evidence proposal for a 280–400 nm outdoor sensor. Housing, seal, detector and qualification remain unresolved.",
+      "difficulty": "Unassessed",
+      "category": "Optical window prototype",
+      "estimated_cost": 127
+    },
+    "constraints": [
+      "Window-only supplier catalog cost; excludes mount, detector, shipping, tax and qualification.",
+      "No production release; transmission, haze, impact, seal and lifetime requirements remain unresolved."
+    ],
+    "assembly_metadata": {
+      "benchmark_id": "MAT-01",
+      "evidence_file": "evidence.json",
+      "requirements_file": "requirements.json",
+      "production_release": false,
+      "qualification_status": "Blocked",
+      "schema_commit": "ffd6772d54fa410e46910890434572333026e395"
+    },
+    "validation": {
+      "critical": [
+        {
+          "severity": "CRITICAL",
+          "category": "Unqualified optical/mechanical component",
+          "description": "No candidate is qualified: matched finished-part spectra, acceptance thresholds, impact, seal and outdoor-life validation are missing.",
+          "troubleshooting": "Resolve requirements and perform the documented component and assembly tests before design approval."
+        }
+      ],
+      "warning": [],
+      "info": []
+    }
+  },
+  "mapping_limitations": [
+    "This is a schema-checked window-only proposal, not a completed UV sensor or qualified product.",
+    "Material/optical/environmental/evidence fields are stored in the existing free-form ComponentInstance.configuration; no typed optical acceptance schema is asserted.",
+    "No quantified enclosure, seal or retainer part has been invented.",
+    "A target project must merge these records and pass full schema plus engineering review."
+  ]
+}

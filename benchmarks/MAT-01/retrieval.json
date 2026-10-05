@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-05",
+  "method": "Public page/PDF text retrieval and source archive inspection; manual structured transcription",
+  "source_refreshes": [
+    {
+      "source_id": "S02",
+      "url": "https://www.edmundoptics.com/p/25mm-dia-2mm-thick-uncoated-lambda4-fused-silica-window/43291/",
+      "location": "Specifications; stock and quantity pricing; Technical Information",
+      "outcome": "Parsed page/table accessed",
+      "retrieval_date": "2026-10-05",
+      "retained": "Structured facts with source locations and applicability limits; no copyrighted source PDF copy committed."
+    },
+    {
+      "source_id": "S03",
+      "url": "https://www.materialfactory.de/_upl/_artikel/222_6_plexiglas_gs_uv_durchlaessig_farblos_2458_und_sc_de.pdf",
+      "location": "p1 processing; p2 aging protocol/figure; p3 technical table",
+      "outcome": "Parsed page/table accessed",
+      "retrieval_date": "2026-10-05",
+      "retained": "Structured facts with source locations and applicability limits; no copyrighted source PDF copy committed."
+    },
+    {
+      "source_id": "S05",
+      "url": "https://www.plexiglas.de/de/produkte/plexiglas/plexiglas-gs-xt",
+      "location": "UV-durchl\u00e4ssig: 2458 smooth / 2458 SC one side matt; cast sheet formats",
+      "outcome": "Parsed page/table accessed",
+      "retrieval_date": "2026-10-05",
+      "retained": "Structured facts with source locations and applicability limits; no copyrighted source PDF copy committed."
+    },
+    {
+      "source_id": "S06",
+      "url": "https://plaskolite.com/catalog/tuffak-uv",
+      "location": "Description; Features; Stock Items, item 83838702",
+      "outcome": "Parsed page/table accessed",
+      "retrieval_date": "2026-10-05",
+      "retained": "Structured facts with source locations and applicability limits; no copyrighted source PDF copy committed."
+    },
+    {
+      "source_id": "S07",
+      "url": "https://www.materialfactory.de/plexiglas-acrylglas/4288-gs-farblos",
+      "location": "Materialst\u00e4rken and Formzuschnitte verf\u00fcgbar",
+      "outcome": "Parsed page/table accessed",
+      "retrieval_date": "2026-10-05",
+      "retained": "Structured facts with source locations and applicability limits; no copyrighted source PDF copy committed."
+    }
+  ],
+  "failed_retrievals": [
+    {
+      "target": "S02 linked uncoated fused-silica raw spectrum",
+      "outcome": "Retrieval tool returned Internal Error",
+      "consequence": "No numeric spectrum retained; family caption is for 3 mm, not selected 2 mm part."
+    },
+    {
+      "target": "GitHub repository API caid-technologies/Form-OSS and Forma-OSS",
+      "outcome": "404 Not Found",
+      "consequence": "Recovered actual source from two user-saved git archives; current remote branch not verified."
+    },
+    {
+      "target": "Pinned raw GitHub models.py URL",
+      "outcome": "Retrieval tool returned Internal Error",
+      "consequence": "Use the hash-pinned source archive and actual Pydantic model instead."
+    }
+  ],
+  "historical_limitations": "Prior PDF screenshot/cache errors and supplier view conflicts are recorded in recovered research; no graph digitization or browser visual verification is claimed."
+}

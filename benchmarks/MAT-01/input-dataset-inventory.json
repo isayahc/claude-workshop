@@ -1,0 +1,9 @@
+{
+  "candidate_electronic_structure_inputs": [],
+  "candidate_specific_orbital_analysis": "Blocked",
+  "missing": "Grade-relevant, scientifically justified electronic-structure datasets were not supplied. Bulk finished-window spectra and mechanical/environmental tests, not molecular pictures, drive this selection.",
+  "smoke_fixtures": "plan.json pins unchanged examples/mcp inputs; source/exports hashed in run.json.",
+  "bulk_spectral_arrays": null,
+  "numeric_supplier_point": "E202 is a typical table bound at 315 nm, not a measured full-band array.",
+  "orbital_decision_value": "No demonstrated decision value."
+}
