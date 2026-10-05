@@ -50,7 +50,21 @@ python data/fetch_sequences.py --output .protein-runs/abl1-input
 For an offline run, add `--offline --cache tests/fixtures/abl1/P00519.cache.json`
 and choose a new output directory. The default annotated interval is IA residues
 242–493, so source T315 maps to extracted residue 74. Structure prediction,
-pocket detection and docking are the subsequent tracked stages (#5–#8).
+pocket detection and docking form the remaining workflow.
+
+The [ESMFold structure stage](docs/abl1-structures.md) accepts either validated
+FASTA, runs a local pinned model, checks source-to-structure residue mapping and
+confidence, and caches successful predictions. It requires the optional `fold`
+dependencies and suitable compute. Try the artifact flow offline with:
+
+```bash
+python -m protein_workflow.folding --backend fixture --fasta .protein-runs/abl1-input/ABL1_WT.fasta --output .protein-runs/abl1-fixture-WT
+```
+
+Fixture coordinates are artificial and carry no scientific confidence. The guide
+documents real model setup and the optional smoke test; real pretrained inference
+has not yet been verified in this implementation environment. Pocket detection,
+docking and the comparison interface remain tracked in #6–#8.
 
 ## Orbital Studio
 
