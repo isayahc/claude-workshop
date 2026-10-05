@@ -23,6 +23,20 @@ jobs:
           path: .protein-runs/ABL1-sequences/
           if-no-files-found: error
           retention-days: 30
+      - name: Exercise both ABL1 variants and cache reuse with illustrative structure backend
+        run: |
+          python -m protein_workflow.folding --backend fixture --fasta .protein-runs/ABL1-sequences/ABL1_WT.fasta --output .protein-runs/ABL1-structure-fixture/WT
+          python -m protein_workflow.folding --backend fixture --fasta .protein-runs/ABL1-sequences/ABL1_T315I.fasta --output .protein-runs/ABL1-structure-fixture/T315I
+          python -m protein_workflow.folding --backend fixture --fasta .protein-runs/ABL1-sequences/ABL1_WT.fasta --output .protein-runs/ABL1-structure-fixture/WT-cached
+          cp .benchmark-runs/test-results.xml .protein-runs/ABL1-structure-fixture/test-results.xml
+      - name: Publish ABL1 structure fixture evidence (no pretrained inference)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ABL1-structure-fixture-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .protein-runs/ABL1-structure-fixture/
+          if-no-files-found: warn
+          retention-days: 30
       - name: Record SEMI-01 device evidence and actual MCP capability checks
         run: python benchmarks/SEMI-01/reproduce.py --output .benchmark-runs/SEMI-01
       - name: Preserve SEMI-01 test results even on failure

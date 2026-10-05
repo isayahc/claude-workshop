@@ -18,10 +18,12 @@ dependencies = [
 mcp = ["mcp>=1.28,<2"]
 ui = ["streamlit>=1.54,<2"]
 test = ["pytest>=8,<10", "jsonschema>=4.23,<5"]
+fold = ["torch>=2.6,<3", "transformers==4.57.6", "accelerate>=1,<2", "scipy>=1.13,<2"]
 
 [project.scripts]
 orbital-studio-mcp = "orbital_viewer.mcp_server:main"
 abl1-fetch-sequences = "protein_workflow.sequences:main"
+abl1-fold = "protein_workflow.folding:main"
 
 [tool.setuptools.packages.find]
 include = ["orbital_viewer*", "protein_workflow*"]

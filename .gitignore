@@ -8,3 +8,5 @@ dist/
 .benchmark-runs/
 .sequence-cache/
 .protein-runs/
+.protein-cache/
+.venv-fold/
