@@ -150,7 +150,19 @@ def reproduce(output):
         shutil.copyfile(BASE / name, output / name)
     shutil.copyfile(BASE / "README.md", output / "benchmark-report.md")
     shutil.copyfile(SCHEMA, output / "hardware-ir.schema.json")
-    shutil.copyfile(SCHEMA_PROVENANCE, output / "schema-provenance.json")
+    # MAT-01's origin receipt also contains validation of its different proposal.
+    # Keep that historical receipt labeled separately from SEMI-01's own checks.
+    shutil.copyfile(SCHEMA_PROVENANCE, output / "schema-origin.MAT-01.json")
+    origin = read(SCHEMA_PROVENANCE)
+    write(output / "schema-provenance.json", {
+        "benchmark_id": "SEMI-01", "source_repository": origin["source_repository"],
+        "source_revision": origin["source_revision"], "schema_version": origin["schema_version"],
+        "schema_sha256": SCHEMA_HASH, "source_files": origin["source_files"],
+        "reused_schema_origin": "schema-origin.MAT-01.json",
+        "reused_schema_origin_sha256": fingerprint(SCHEMA_PROVENANCE)["sha256"],
+        "pydantic_model_validation_performed": False, "current_live_schema_verified": False,
+        "application_import_performed": False,
+        "scope": "SEMI-01 validates JSON Schema only. MAT-01's historical model receipt does not validate this proposal."})
     screen(output / "design.json", output / "assessment.json")
     write(output / "mapping-check.json", data["mapping_check"])
     source_paths = sorted(p for p in BASE.iterdir() if p.is_file()) + [

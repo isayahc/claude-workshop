@@ -161,6 +161,10 @@ def test_actual_mcp_bundle_and_tamper_detection(tmp_path):
     assert [c["name"] for c in record["calls"]] == ["inspect_cube", "export_orbital"]
     assert len(record["generated_artifacts"]) == 1
     manifest = reproduce.read(output / "evidence-manifest.json")
+    provenance = reproduce.read(output / "schema-provenance.json")
+    assert provenance["benchmark_id"] == "SEMI-01"
+    assert provenance["pydantic_model_validation_performed"] is False
+    assert provenance["reused_schema_origin_sha256"] == fingerprint(output / "schema-origin.MAT-01.json")["sha256"]
     for artifact in manifest["bundle_files"]:
         assert fingerprint(output / artifact["path"])["sha256"] == artifact["sha256"]
     assert set(record["engineering_decision"][k] for k in reproduce.read(CASE / "plan.json")["unknown_quantities"]) == {None}
