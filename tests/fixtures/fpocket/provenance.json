@@ -1,0 +1,49 @@
+{
+  "classification": "recorded_reference_excerpt",
+  "source_repository": "https://github.com/Discngine/fpocket",
+  "source_commit": "4bb0d8447f62fee77e2c3c29f54b5fcaf5e2c066",
+  "source_tag": "4.2.3",
+  "reported_version": "4.0",
+  "source_input": "data/sample/1UYD.pdb",
+  "normalization": "Keep ATOM records with blank or A alternate location; replace A with blank; omit HETATM and other records; append TER/END. Preserve experimental B-factors.",
+  "source_input_sha256": "923e978e1d570f854d0d5f96d515f70d6fdac25216de586fe8c97a266e803b0c",
+  "normalized_input_sha256": "6ac84694118fd5afc8a6a1a7fb372501b9e3ae4a1781ab2b92bc649c1a8dcc3f",
+  "binary_sha256": "ea9615cde6563f8063c2408301b77ef3ef37ab66c892ec2ef3b15656fe44e62c",
+  "command": [
+    "fpocket",
+    "-f",
+    "receptor.pdb"
+  ],
+  "captured_at": "2026-10-05T20:07:47.868218+00:00",
+  "excerpt": "First two complete pocket records and the union of their contacted atoms from a 13-pocket run. Reference protein is not ABL1; no UniProt/domain numbering or pLDDT is assigned.",
+  "artifacts": {
+    "LICENSE.fpocket": {
+      "sha256": "cf22a1b400afa433f68fa0ffb8c2454d3b6bebb34466693512ca63aaa52dcc6b",
+      "bytes": 1094
+    },
+    "contact-reference.pdb": {
+      "sha256": "17d429ba53600e0c866a72889a8766483a1fc70da4c9b10729e7502780f70ad6",
+      "bytes": 5678
+    },
+    "receptor_out/receptor_info.txt": {
+      "sha256": "f22b49249fd3192b256acdcdbc6d12440e0d5e3d1a3008dd429d9ea1f2126c05",
+      "bytes": 1126
+    },
+    "receptor_out/pockets/pocket2_atm.pdb": {
+      "sha256": "4dbc0ab8f46eb2eccfc55bff6d07757af1845fbdda5c55bc932fb01b7f8c0e8d",
+      "bytes": 4938
+    },
+    "receptor_out/pockets/pocket1_vert.pqr": {
+      "sha256": "c747d927768f951105cb6ca35874575eb05122fd95a5b581f46fcb21559a745c",
+      "bytes": 2884
+    },
+    "receptor_out/pockets/pocket2_vert.pqr": {
+      "sha256": "50d5eb328da7d813514f387e110631f4d8efefc0198a3ffece1ea1cf0cfeffe9",
+      "bytes": 6196
+    },
+    "receptor_out/pockets/pocket1_atm.pdb": {
+      "sha256": "1ea35f984e8bc933138fd7327f5738edbb0ae9d518d3f5b061a939e2ced1a15a",
+      "bytes": 2993
+    }
+  }
+}

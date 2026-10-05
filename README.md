@@ -63,8 +63,20 @@ python -m protein_workflow.folding --backend fixture --fasta .protein-runs/abl1-
 
 Fixture coordinates are artificial and carry no scientific confidence. The guide
 documents real model setup and the optional smoke test; real pretrained inference
-has not yet been verified in this implementation environment. Pocket detection,
-docking and the comparison interface remain tracked in #6–#8.
+has not yet been verified in this implementation environment.
+
+The [fpocket stage](docs/abl1-pockets.md) detects cavities independently for each
+validated structure, preserves residue mappings and native-tool provenance, and
+exports explicit pocket selections with docking-box proposals in Å:
+
+```bash
+python -m protein_workflow.pockets detect --structure-result .protein-runs/esmfold-WT/result.json --output .protein-runs/pockets-WT
+```
+
+Install fpocket separately as described in the guide. Detection never selects a
+binding site automatically. The real executable is verified on its experimental
+reference protein; ABL1 fixture structures remain illustrative. Docking and the
+comparison interface remain tracked in #7–#8.
 
 ## Orbital Studio
 

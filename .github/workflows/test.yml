@@ -134,3 +134,32 @@ jobs:
           path: .benchmark-runs/BAT-01/
           if-no-files-found: warn
           retention-days: 30
+  fpocket-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check out verified fpocket 4.2.3 source
+        uses: actions/checkout@v4
+        with:
+          repository: Discngine/fpocket
+          ref: 4bb0d8447f62fee77e2c3c29f54b5fcaf5e2c066
+          path: .fpocket-tool
+      - name: Compile real fpocket (serial build avoids upstream Qhull race)
+        run: make -C .fpocket-tool > fpocket-build.log 2>&1
+      - name: Verify real positive and no-pocket outputs on experimental reference
+        run: python -m protein_workflow.pocket_smoke --fpocket-root .fpocket-tool --output .protein-runs/fpocket-reference
+      - name: Publish real fpocket reference evidence (not ABL1 inference)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fpocket-reference-${{ github.run_id }}-${{ github.run_attempt }}
+          include-hidden-files: true
+          path: |
+            .protein-runs/fpocket-reference/
+            fpocket-build.log
+          if-no-files-found: warn
+          retention-days: 30
