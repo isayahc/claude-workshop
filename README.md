@@ -92,6 +92,25 @@ Spectrum broadening uses area-normalized Gaussians in **energy space**, with FWH
 
 Files are processed by the app's Python server. Run locally for local-only calculation handling. Offline exported HTML embeds Plotly and the displayed data.
 
+### Explain absorption: EDU-01
+
+The [EDU-01 teaching benchmark](benchmarks/EDU-01/README.md) exercises the actual
+MCP tools, exports interactive orbital/spectrum views, and creates an evidence-linked
+explanation of amplitude, density, phase, excitation energies, oscillator strengths,
+HOMO/LUMO and NTOs. Its supplied examples are synthetic; molecular assignment stays
+blocked until a matched calculation bundle is provided.
+
+```bash
+python -m pip install -r requirements.txt
+python -m orbital_viewer.benchmark --plan benchmarks/EDU-01/plan.json --data-dir examples/mcp --output .benchmark-runs/EDU-01
+python -m orbital_viewer.absorption_explanation --run-dir .benchmark-runs/EDU-01 --lesson benchmarks/EDU-01/lesson.json
+```
+
+Open `.benchmark-runs/EDU-01/index.html`. Keep its whole directory together so the
+three interactive HTML views, spectrum CSV, raw responses and provenance remain
+available. Choose a new output directory for another run. CI also publishes this
+directory as the `EDU-01-synthetic-evidence` artifact.
+
 ### Verification
 
 ```bash

@@ -24,6 +24,24 @@ jobs:
           path: .benchmark-runs/PROCESS-01/
           if-no-files-found: warn
           retention-days: 30
+      - name: Record EDU-01 actual MCP calls and synthetic teaching exports
+        run: python -m orbital_viewer.benchmark --plan benchmarks/EDU-01/plan.json --data-dir examples/mcp --output .benchmark-runs/EDU-01
+      - name: Explain EDU-01 evidence and preserve the blocked molecular assignment
+        run: python -m orbital_viewer.absorption_explanation --run-dir .benchmark-runs/EDU-01 --lesson benchmarks/EDU-01/lesson.json
+      - name: Preserve EDU-01 report and test results even on failure
+        if: always()
+        run: |
+          mkdir -p .benchmark-runs/EDU-01
+          cp benchmarks/EDU-01/README.md .benchmark-runs/EDU-01/benchmark-report.md
+          if [ -f .benchmark-runs/test-results.xml ]; then cp .benchmark-runs/test-results.xml .benchmark-runs/EDU-01/test-results.xml; fi
+      - name: Publish EDU-01 evidence (synthetic teaching only)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: EDU-01-synthetic-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .benchmark-runs/EDU-01/
+          if-no-files-found: warn
+          retention-days: 30
       - name: Record SENSOR-01 actual MCP calls and synthetic exports
         run: python -m orbital_viewer.benchmark --plan benchmarks/SENSOR-01/plan.json --data-dir examples/mcp --output .benchmark-runs/SENSOR-01
       - name: Derive uncalibrated SENSOR-01 sizing and preserve inputs

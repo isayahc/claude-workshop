@@ -1,0 +1,186 @@
+{
+  "schema_version": "1",
+  "benchmark_id": "EDU-01",
+  "evidence_scope": "synthetic_fixture",
+  "concepts": [
+    {
+      "name": "Wavefunction amplitude",
+      "classification": "External knowledge",
+      "explanation": "An orbital is a one-electron spatial wavefunction. Its amplitude may be signed or complex; it is not a probability or a charge. A CUBE stores a scalar field, so its generating calculation must identify whether it contains an orbital, density or another quantity.",
+      "source_ids": [
+        "S1",
+        "S6"
+      ]
+    },
+    {
+      "name": "Probability density",
+      "classification": "External knowledge",
+      "explanation": "For a normalized one-electron wavefunction, |ψ(r)|² is nonnegative and integrates to one. Probability in a region is its volume integral. The square of one molecular orbital is not the total many-electron density. These synthetic CUBE values have no demonstrated physical normalization.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "name": "Orbital phase",
+      "classification": "External knowledge",
+      "explanation": "For a real orbital, opposite signs represent phases differing by π. Reversing the entire sign changes neither |ψ|² nor any observable. Relative phases within a superposition affect interference. Positive/negative colors never mean positive/negative electric charge.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "name": "Electron density",
+      "classification": "External knowledge",
+      "explanation": "The electron number density n(r) integrates to the electron count. In a natural-orbital representation it is an occupation-weighted sum Σᵢ nᵢ|φᵢ(r)|²; a general orbital basis uses the one-particle density matrix. Electronic charge density is −e times this number density.",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "name": "Excitation energy",
+      "classification": "External knowledge",
+      "explanation": "An excitation energy is the difference between many-electron electronic-state energies. Photon wavelength is hc/ΔE. A vertical electronic excitation holds the nuclear geometry fixed. It is not generally equal to a ground-state HOMO–LUMO orbital-energy difference.",
+      "source_ids": [
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "name": "Oscillator strength",
+      "classification": "External knowledge",
+      "explanation": "The dimensionless oscillator strength quantifies transition intensity. In the electric-dipole approximation it depends on excitation energy and the squared transition dipole matrix element. It is neither an orbital occupation, an NTO weight, nor a fluorescence quantum yield.",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "name": "Absorption spectrum",
+      "classification": "External knowledge",
+      "explanation": "A transition table supplies discrete sticks. An assumed lineshape turns them into an envelope. Here each Gaussian has area f in energy space; width changes height and overlap. The wavelength view retains f/eV, so integrating it over nm does not yield total oscillator strength. No experimental absorbance is computed.",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "name": "HOMO/LUMO terminology",
+      "classification": "External knowledge",
+      "explanation": "HOMO and LUMO identify the highest occupied and lowest unoccupied orbitals of a stated reference and spin convention. A transition can contain multiple occupied-to-virtual contributions. Assigning one needs state-resolved coefficients, occupation/index metadata and the corresponding orbital files.",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "name": "NTO hole/electron orbitals",
+      "classification": "External knowledge",
+      "explanation": "Natural transition orbitals give paired hole and electron channels for a particular electronic transition, with weights from the transition-density analysis. They are not automatically the HOMO and LUMO. Keep state, pair, spin, weight convention and exported CUBE mapping together. No such pair or weight is supplied here.",
+      "source_ids": [
+        "S5"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "MIT 8.04, Lecture 3: The Wavefunction (2013), pp. 1–3",
+      "url": "https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2013/19862abcdf8e4f7cf1321d060cd6dd7c_MIT8_04S13_Lec03.pdf",
+      "scope": "Probability amplitude, modulus squared, normalization, and global versus relative phase. Teaching reference, not molecular input data.",
+      "access": "Full lecture PDF read.",
+      "retrieved_utc_date": "2026-10-05"
+    },
+    {
+      "id": "S2",
+      "title": "IUPAC Gold Book: natural orbital, NT07079",
+      "url": "https://goldbook.iupac.org/terms/view/NT07079",
+      "scope": "Electron density expressed using a density matrix and, in its natural-orbital basis, occupation-weighted orbital products.",
+      "access": "Official indexed definition retrieved; direct page returned HTTP 403.",
+      "retrieved_utc_date": "2026-10-05"
+    },
+    {
+      "id": "S3",
+      "title": "ORCA 6.1 manual §5.14: One Photon Spectroscopy",
+      "url": "https://www.faccts.de/docs/orca/6.1/manual/contents/spectroscopyproperties/ops.html",
+      "scope": "Excitation energies, oscillator strengths and transition dipoles. Does not establish values for these fixtures.",
+      "access": "Official manual read.",
+      "retrieved_utc_date": "2026-10-05"
+    },
+    {
+      "id": "S4",
+      "title": "ORCA 6.1 UV/Vis tutorial: state composition and spectrum plotting",
+      "url": "https://www.faccts.de/docs/orca/6.1/tutorials/spec/UVVis.html",
+      "scope": "State contributions, Gaussian display broadening, HOMO/LUMO interpretation and orbital-index conventions. No tutorial molecular results are copied into this benchmark.",
+      "access": "Official tutorial read.",
+      "retrieved_utc_date": "2026-10-05"
+    },
+    {
+      "id": "S5",
+      "title": "ORCA 6.1 manual §5.6.11: Natural Transition Orbitals",
+      "url": "https://www.faccts.de/docs/orca/6.1/manual/contents/spectroscopyproperties/tddft.html#natural-transition-orbitals",
+      "scope": "State-specific NTOs, paired orbital indices, weights and export prerequisites; no NTO inference from spectra.",
+      "access": "Official manual read.",
+      "retrieved_utc_date": "2026-10-05"
+    },
+    {
+      "id": "S6",
+      "title": "ORCA 6.1 manual §9.1: Orbital and Density Plots",
+      "url": "https://www.faccts.de/docs/orca/6.1/manual/contents/utilitiesvisualization/plots.html",
+      "scope": "Orbital, total-density and spin-density exports are distinct fields; field identity must accompany a CUBE.",
+      "access": "Official manual read.",
+      "retrieved_utc_date": "2026-10-05"
+    }
+  ],
+  "missing_data": [
+    {
+      "required_for": "Molecular assignment",
+      "artifact": "Matched molecule/geometry identity, charge, multiplicity, reference state, method, basis, solvent/environment, program/version and calculation convergence; original input/output hashes tying every artifact to the same job."
+    },
+    {
+      "required_for": "Molecular assignment",
+      "artifact": "Full state-resolved excitation output with state IDs, energies, oscillator strengths, transition dipoles and occupied-to-virtual contributions (coefficients and their method-specific interpretation), spin labels and printing threshold."
+    },
+    {
+      "required_for": "Molecular assignment",
+      "artifact": "CUBEs of the contributing orbitals with field type, orbital index, zero/one-based convention, occupations, geometry/grid units and a mapping to the state contributions. One unsigned label or filename is insufficient."
+    },
+    {
+      "required_for": "NTO interpretation, if used",
+      "artifact": "State-specific NTO hole/electron CUBE pairs plus printed pair weights, normalization/threshold convention, spin and source wavefunction/transition-density provenance. Optional for an MO-based assignment; mandatory for an NTO claim."
+    },
+    {
+      "required_for": "Comparison with experiment or hardware use",
+      "artifact": "Measured absorption with sample identity, concentration/path length, solvent/temperature, calibration and uncertainty, plus the application-specific response model. This is separate from a defensible computed transition assignment."
+    }
+  ],
+  "manual_handoffs": [
+    "Requester → computational chemist: provide molecule, geometry, charge/spin and the spectral question; select an appropriate electronic-structure method and environmental model.",
+    "Computational chemist → artifact producer: review convergence and state composition; export corresponding orbital CUBEs, and NTO pairs/weights when relevant, using the producing engine.",
+    "Artifact producer → Orbital Studio operator: supply a hashed job manifest with field types, units, orbital/state indices and pair mapping; preserve the original calculation output alongside any CSV fallback.",
+    "Orbital Studio operator → scientific reviewer: inspect fields, table and broadened exports; reconcile indexing and geometry; separate observed values, derived conversions and assumed display settings.",
+    "Scientific reviewer → CAID/educator: approve only supported transition statements; attach evidence and unresolved questions. Experimental/material qualification and any validated CAID import are subsequent work."
+  ],
+  "friction": [
+    {
+      "gap": "No molecule-specific calculation bundle supplied",
+      "capability": "Reusable dataset intake contract with identity, calculation conditions, hashes and explicit evidence scope."
+    },
+    {
+      "gap": "CUBE headers and filenames do not establish state/occupation/field identity",
+      "capability": "Typed field metadata plus stable state-to-orbital mappings and explicit index conventions."
+    },
+    {
+      "gap": "Transition API/CSV keeps energy and strength but omits state coefficients and transition densities",
+      "capability": "Versioned state-assignment schema and reviewed engine adapters retaining raw output and parser version."
+    },
+    {
+      "gap": "NTO pairing, weights and geometry alignment require manual work",
+      "capability": "Explicit pair manifests and alignment checks; never infer weights from oscillator strengths or file order."
+    },
+    {
+      "gap": "Broadening and wavelength remapping can look like measured spectra",
+      "capability": "Persistent provenance, f/eV units, linewidth assumptions and numerical sampling diagnostics beside every teaching view."
+    },
+    {
+      "gap": "Exports are disconnected from the explanation and engineering decision",
+      "capability": "Portable explanation bundle linking exact MCP response pointers, hashed exports, claim classifications and a blocked-or-approved review outcome; this PR implements the synthetic teaching subset."
+    }
+  ]
+}
