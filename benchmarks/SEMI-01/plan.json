@@ -1,0 +1,59 @@
+{
+  "schema_version": "1",
+  "benchmark_id": "SEMI-01",
+  "evidence_scope": "synthetic_fixture",
+  "input_source_revision": "ec03abc382bc7718a159f80a735665884f5b6e45",
+  "purpose": "Verify current CUBE transport/inspection/export only. No semiconductor scientific input was supplied. The synthetic field cannot rank devices or materials.",
+  "unknown_quantities": [
+    "material_band_gap_ev",
+    "device_breakdown_voltage_v",
+    "switching_loss_w",
+    "junction_temperature_c",
+    "approved_bus_voltage_v",
+    "approved_current_a",
+    "approved_switching_frequency_hz"
+  ],
+  "inputs": [
+    {
+      "filename": "signed-field.cube",
+      "provenance": "Repository synthetic scalar field, NOT Si, SiC, GaN, a Bloch state, charge density or measured semiconductor data",
+      "source_blob_sha1": "00360f0401245ef8fa2524e3079da0adfed44ea3"
+    }
+  ],
+  "calls": [
+    {
+      "name": "inspect_cube",
+      "arguments": {
+        "filename": "signed-field.cube"
+      }
+    },
+    {
+      "name": "export_orbital",
+      "arguments": {
+        "filename": "signed-field.cube",
+        "isovalue": 0.5
+      }
+    }
+  ],
+  "assumptions": [
+    {
+      "classification": "Assumed",
+      "isovalue": 0.5,
+      "purpose": "Software fixture display only"
+    }
+  ],
+  "intentionally_unused_tools": [
+    {
+      "name": "inspect_transitions",
+      "reason": "Molecular optical transitions/broadening are not electronic DOS, band dispersion, transport or switching loss."
+    },
+    {
+      "name": "broaden_spectrum",
+      "reason": "Molecular optical transitions/broadening are not electronic DOS, band dispersion, transport or switching loss."
+    },
+    {
+      "name": "export_spectrum",
+      "reason": "Molecular optical transitions/broadening are not electronic DOS, band dispersion, transport or switching loss."
+    }
+  ]
+}

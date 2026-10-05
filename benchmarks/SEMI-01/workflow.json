@@ -1,0 +1,206 @@
+{
+  "schema_version": "1",
+  "benchmark_id": "SEMI-01",
+  "classification": "Assumed",
+  "execution_status": "proposed_not_executed",
+  "cots_selection_requires_new_dft": false,
+  "new_bulk_band_claim_requires_periodic_evidence": true,
+  "jobs": [
+    {
+      "id": "scope",
+      "depends_on": [],
+      "route": "commercial",
+      "status": "blocked_missing_inputs",
+      "outputs": [
+        "operating-point.json",
+        "voltage-stress-budget.json",
+        "mission-profile.json"
+      ]
+    },
+    {
+      "id": "device_models",
+      "depends_on": [
+        "scope"
+      ],
+      "route": "commercial",
+      "status": "not_run",
+      "outputs": [
+        "datasheet-revisions.json",
+        "condition-matched-curves.json",
+        "vendor-models-and-licenses.json",
+        "quotes.json"
+      ]
+    },
+    {
+      "id": "electrical_thermal",
+      "depends_on": [
+        "device_models"
+      ],
+      "route": "commercial",
+      "status": "not_run",
+      "outputs": [
+        "loss-model.json",
+        "transient-thermal-model.json",
+        "gate-protection-schematic",
+        "parasitic-layout-model"
+      ]
+    },
+    {
+      "id": "validation",
+      "depends_on": [
+        "electrical_thermal"
+      ],
+      "route": "commercial",
+      "status": "not_run",
+      "outputs": [
+        "double-pulse-waveforms",
+        "thermal-and-fault-tests",
+        "EMC-and-motor-interface-results",
+        "qualification-review"
+      ]
+    },
+    {
+      "id": "caid_handoff",
+      "depends_on": [
+        "validation"
+      ],
+      "route": "commercial",
+      "status": "not_run",
+      "outputs": [
+        "validated-Hardware-IR",
+        "target-project-import-receipt",
+        "reviewed-BOM-and-operating-envelope"
+      ]
+    },
+    {
+      "id": "periodic_structure",
+      "depends_on": [
+        "scope"
+      ],
+      "route": "optional_material_research",
+      "status": "not_run",
+      "outputs": [
+        "crystal-polytype-doping-strain.json",
+        "pseudopotential-hashes",
+        "cutoff-kmesh-convergence",
+        "relaxed-cell-and-positions"
+      ]
+    },
+    {
+      "id": "bands_dos",
+      "depends_on": [
+        "periodic_structure"
+      ],
+      "route": "optional_material_research",
+      "status": "not_run",
+      "outputs": [
+        "SCF-NSCF-bands-logs",
+        "k-path-and-reciprocal-units",
+        "eigenvalues-occupations-energy-reference",
+        "DOS-PDOS-projection-basis",
+        "gap-method-validation",
+        "effective-mass-tensor-fit-with-convergence"
+      ]
+    },
+    {
+      "id": "defects_transport",
+      "depends_on": [
+        "bands_dos"
+      ],
+      "route": "optional_material_research",
+      "status": "not_run",
+      "outputs": [
+        "defect-supercell-charge-correction-and-chemical-potentials",
+        "interface-or-heterostructure-model",
+        "phonons-and-scattering-mobility-model-if-needed",
+        "thermal-transport-evidence-if-needed"
+      ]
+    },
+    {
+      "id": "field_handoff",
+      "depends_on": [
+        "bands_dos"
+      ],
+      "route": "optional_material_research",
+      "status": "not_run",
+      "outputs": [
+        "scalar-grid-plus-physical-quantity-units",
+        "complex-wavefunction-components-and-gauge-if-needed",
+        "lattice-PBC-band-kpoint-spin-occupation-sidecar",
+        "field-aware-viewer-validation"
+      ]
+    }
+  ],
+  "manual_handoffs": [
+    {
+      "id": "H1",
+      "owner": "system/motor engineer",
+      "deliverable": "Resolve bus/rating interpretation and full operating/mission profile",
+      "requirement_ids": [
+        "R01",
+        "R02"
+      ]
+    },
+    {
+      "id": "H2",
+      "owner": "power electronics engineer",
+      "deliverable": "Select compatible voltage classes and run condition-matched vendor-model/loss/protection studies",
+      "requirement_ids": [
+        "R03",
+        "R05",
+        "R06"
+      ]
+    },
+    {
+      "id": "H3",
+      "owner": "thermal, EMC and manufacturing reviewers",
+      "deliverable": "Approve package/layout/cooling and plan switching, thermal, fault and motor-interface tests",
+      "requirement_ids": [
+        "R04",
+        "R07",
+        "R08",
+        "R09"
+      ]
+    },
+    {
+      "id": "H4",
+      "owner": "procurement",
+      "deliverable": "Obtain comparable quotes, stock/lead-time and lifecycle evidence",
+      "requirement_ids": [
+        "R10"
+      ]
+    },
+    {
+      "id": "H5",
+      "owner": "solid-state researcher, if material research is requested",
+      "deliverable": "Supply validated periodic artifacts and field semantics; no quantum calculation is required merely to buy a COTS switch",
+      "requirement_ids": [
+        "R11"
+      ]
+    },
+    {
+      "id": "H6",
+      "owner": "CAID integrator and release reviewer",
+      "deliverable": "Map reviewed evidence into the current schema, verify application import and authorize release separately",
+      "requirement_ids": [
+        "R12"
+      ]
+    }
+  ],
+  "reusable_gaps": [
+    "Condition-aware datasheet/curve ingestion with revision and license provenance",
+    "Operating-point and unit-aware loss/thermal/protection requirement evaluation",
+    "Periodic crystal, k-point, DOS/PDOS and defect artifact schemas",
+    "Field semantics and complex/PBC-aware visualization instead of relabeling every CUBE as orbital amplitude",
+    "Vendor simulation orchestration with convergence and experimental reconciliation",
+    "Procurement evidence with dated comparable quotes",
+    "Evidence-linked CAID import and explicit reviewed release transitions"
+  ],
+  "friction": [
+    "Issue omits voltage interpretation, topology, load and mission profile",
+    "Catalog test conditions and typical/maximum values differ; no comparable operating-point loss data",
+    "No candidate periodic artifacts or relevant upstream engine were supplied",
+    "Available session tool discovery returned no CAID or Orbital Studio connector; actual local stdio server is used for software checks",
+    "Forma compatibility is tied to the existing pinned MAT-01 schema, not a verified current application deployment"
+  ]
+}
