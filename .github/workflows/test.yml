@@ -14,6 +14,21 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python -m pytest -q --junitxml=.benchmark-runs/test-results.xml
+      - name: Record SEMI-01 device evidence and actual MCP capability checks
+        run: python benchmarks/SEMI-01/reproduce.py --output .benchmark-runs/SEMI-01
+      - name: Preserve SEMI-01 test results even on failure
+        if: always()
+        run: |
+          mkdir -p .benchmark-runs/SEMI-01
+          if [ -f .benchmark-runs/test-results.xml ]; then cp .benchmark-runs/test-results.xml .benchmark-runs/SEMI-01/test-results.xml; fi
+      - name: Publish SEMI-01 evidence (unqualified power module)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SEMI-01-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .benchmark-runs/SEMI-01/
+          if-no-files-found: warn
+          retention-days: 30
       - name: Record MAT-01 material evidence and actual MCP smoke tests
         run: python benchmarks/MAT-01/reproduce.py --output .benchmark-runs/MAT-01
       - name: Preserve MAT-01 test results even on failure

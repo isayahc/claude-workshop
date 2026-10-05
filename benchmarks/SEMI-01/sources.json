@@ -1,0 +1,134 @@
+{
+  "retrieved_on": "2026-10-05",
+  "classification": "External knowledge",
+  "sources": [
+    {
+      "id": "S1",
+      "title": "TI: A Robust Gate Driver Solution for High Power Density EV On-Board Chargers using SiC MOSFETs",
+      "url": "https://www.ti.com/content/dam/videos/external-videos/en-us/3/3816841626001/5794468172001.mp4/subassets/a_robust_gate_driver_solution_for_high_power_density_ev_on-board_chargers_using_silicon_carbide_sic_mosfets.pdf",
+      "locator": "Slide 3, intrinsic material property comparison",
+      "access": "Public manufacturer training PDF, extracted table",
+      "limitation": "Illustrative bulk descriptors; temperature, orientation, doping and uncertainty unspecified; not device ratings or calculated SEMI-01 data."
+    },
+    {
+      "id": "S2",
+      "title": "Infineon: Servo motor drive and control",
+      "url": "https://www.infineon.com/application/servo-drives",
+      "locator": "Application text on SiC and IGBT choices for integrated drives",
+      "access": "Official application page",
+      "limitation": "Manufacturer design guidance, not an independent equal-condition benchmark or this robot specification."
+    },
+    {
+      "id": "S3",
+      "title": "Infineon IPW65R041CFD7 datasheet",
+      "url": "https://www.infineon.com/assets/row/public/documents/24/49/infineon-ipw65r041cfd7-datasheet-en.pdf",
+      "locator": "Rev 2.1, 2020-08-12; pp. 1, 3-5",
+      "access": "Official PDF rating, thermal and electrical tables",
+      "limitation": "650 V breakdown minimum under stated test conditions; 41 mOhm is a maximum; no module operating point inferred."
+    },
+    {
+      "id": "S4",
+      "title": "Wolfspeed C3M0060065K datasheet",
+      "url": "https://assets.wolfspeed.com/uploads/2024/01/Wolfspeed_C3M0060065K_data_sheet.pdf",
+      "locator": "Rev 5, October 2024; pp. 1-2",
+      "access": "Official PDF rating and electrical tables",
+      "limitation": "Current requires specified case/gate temperature conditions; 60 mOhm is typical and not comparable to a rival maximum."
+    },
+    {
+      "id": "S5",
+      "title": "TI LMG352xR030 datasheet",
+      "url": "https://www.ti.com/lit/ds/symlink/lmg3522r030.pdf",
+      "locator": "SNOSDF3B, Rev B January 2025; sections 5.1, 5.3-5.5 and 7.3.1-7.3.3",
+      "access": "Official PDF, extracted specifications and operating text",
+      "limitation": "Surge and non-switching stress have distinct limits. 55 A absolute maximum is not the 38 A recommended RMS value; integrated driver supply is not exposed gate bias."
+    },
+    {
+      "id": "S6",
+      "title": "Infineon IPW65R041CFD7 product page",
+      "url": "https://www.infineon.com/part/IPW65R041CFD7",
+      "locator": "Product status, package and Budgetary Price €/1k field",
+      "access": "Official product page accessed 2026-10-05",
+      "limitation": "Active listing does not confirm orderable stock. Displayed budgetary pricing is not a firm quote or complete module cost."
+    },
+    {
+      "id": "S7",
+      "title": "Wolfspeed C3M0060065K product page",
+      "url": "https://www.wolfspeed.com/products/power/sic-mosfets/650v-silicon-carbide-mosfets/c3m0060065k/",
+      "locator": "Parametric table and ordering status",
+      "access": "Official product page accessed 2026-10-05",
+      "limitation": "Active listing only; no confirmed distributor inventory, lead time or quantity-matched quote."
+    },
+    {
+      "id": "S8",
+      "title": "TI LMG3522R030 product page",
+      "url": "https://www.ti.com/product/LMG3522R030",
+      "locator": "Active status, package, driver and PLECS/PSpice resources",
+      "access": "Official product page accessed 2026-10-05",
+      "limitation": "Models are listed, not downloaded or executed. Stock widgets mix login/availability placeholders; no live stock claim."
+    },
+    {
+      "id": "S9",
+      "title": "Quantum ESPRESSO bands.x input description",
+      "url": "https://www.quantum-espresso.org/Doc/INPUT_BANDS.html",
+      "locator": "Version 7.5, band and reciprocal-coordinate output descriptions",
+      "access": "Official software documentation",
+      "limitation": "Describes upstream capability; no periodic calculation or effective-mass fit was executed."
+    },
+    {
+      "id": "S10",
+      "title": "Quantum ESPRESSO post-processing guide section 4.4",
+      "url": "https://www.quantum-espresso.org/Doc/pp_user_guide/node9.html",
+      "locator": "DOS and atomic projection provenance",
+      "access": "Official software documentation",
+      "limitation": "PDOS depends on projection basis; no SEMI-01 DOS/PDOS exists."
+    },
+    {
+      "id": "S11",
+      "title": "Quantum ESPRESSO pp.x input description",
+      "url": "https://www.quantum-espresso.org/Doc/INPUT_PP.html",
+      "locator": "Version 7.5, plot_num and output_format",
+      "access": "Official software documentation",
+      "limitation": "plot_num=7 is squared modulus; lsign at Gamma gives signed squared modulus, not raw amplitude. CUBE storage does not establish field meaning."
+    }
+  ],
+  "material_context": {
+    "source_ids": [
+      "S1"
+    ],
+    "classification": "External knowledge",
+    "decision_use": "qualitative context only; no automatic ranking",
+    "conditions": "Bulk illustrative training values; temperature, orientation, doping and uncertainty unspecified",
+    "rows": [
+      {
+        "family": "Si",
+        "band_gap_ev": 1.12,
+        "critical_field_mv_cm": 0.3,
+        "electron_mobility_cm2_v_s": [
+          1400,
+          1400
+        ],
+        "thermal_conductivity_w_cm_k": 1.3
+      },
+      {
+        "family": "4H-SiC",
+        "band_gap_ev": 3.26,
+        "critical_field_mv_cm": 3.0,
+        "electron_mobility_cm2_v_s": [
+          900,
+          900
+        ],
+        "thermal_conductivity_w_cm_k": 3.7
+      },
+      {
+        "family": "GaN",
+        "band_gap_ev": 3.4,
+        "critical_field_mv_cm": 3.3,
+        "electron_mobility_cm2_v_s": [
+          990,
+          2000
+        ],
+        "thermal_conductivity_w_cm_k": 1.5
+      }
+    ]
+  }
+}

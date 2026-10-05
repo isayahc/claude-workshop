@@ -127,6 +127,23 @@ The bundle includes raw MCP responses, research inputs, a conditional assessment
 the proposed window/BOM JSON and source/artifact hashes. CI publishes the same
 bundle as `MAT-01-evidence`. Successful tool/schema checks do not qualify a window.
 
+### Compare power semiconductors: SEMI-01
+
+The [SEMI-01 benchmark](benchmarks/SEMI-01/README.md) compares Si, SiC and GaN
+for a 650 V robotic power module. It distinguishes switch rating from bus voltage,
+bulk material evidence from commercial specifications, and periodic solid-state
+research from device selection. SiC is a conditional development baseline; the
+operating point and final device remain unresolved.
+
+```bash
+python benchmarks/SEMI-01/reproduce.py --output .benchmark-runs/SEMI-01
+```
+
+The bundle includes sourced device comparisons, twelve CAID requirements, a
+requirements-only proposal checked against the pinned Forma schema, conservative
+voltage-headroom checks and two actual MCP calls on a synthetic scalar field.
+Successful processing never approves a module or substitutes for device tests.
+
 ### Verification
 
 ```bash

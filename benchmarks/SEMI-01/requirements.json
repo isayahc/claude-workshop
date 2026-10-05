@@ -1,0 +1,128 @@
+{
+  "schema_version": "1",
+  "benchmark_id": "SEMI-01",
+  "classification": "Assumed",
+  "status": "proposed_requirements",
+  "requirements": [
+    {
+      "id": "R01",
+      "name": "Voltage meaning and stress",
+      "owner": "power architect",
+      "requirement": "Resolve 650 V meaning; maximum DC link including regeneration and tolerances, switching overshoot, uncertainty, device-specific surge/lifetime envelope and approved margin policy",
+      "caid_fields": "constraints; assembly_metadata.semi01.voltage_requirement",
+      "verification": "Reviewed voltage budget and measured drain waveforms",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R02",
+      "name": "Topology and load",
+      "owner": "motor/control engineer",
+      "requirement": "Specify inverter/DC-DC/other topology, number of phases, motor/load, RMS/peak current, power, duty cycle and regeneration",
+      "caid_fields": "system_architecture; assembly_metadata.semi01.operating_point",
+      "verification": "Signed operating-point and mission-profile specification",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R03",
+      "name": "Loss and frequency budget",
+      "owner": "power electronics engineer",
+      "requirement": "Select frequency/dead time from matched conduction, switching, reverse-conduction and driver losses over temperature and load",
+      "caid_fields": "components.configuration; constraints",
+      "verification": "Condition-matched loss curves, vendor models and double-pulse validation",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R04",
+      "name": "Thermal envelope",
+      "owner": "thermal engineer",
+      "requirement": "Bound junction/case/ambient temperature, transient impedance, interface and heat-sink performance, power cycling and cooling failure",
+      "caid_fields": "mechanical; constraints",
+      "verification": "Coupled loss/thermal model and instrumented thermal validation",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R05",
+      "name": "Gate drive",
+      "owner": "power electronics engineer",
+      "requirement": "Use part-specific gate or integrated-driver supply limits, startup/shutdown sequencing, isolation, CMTI and Kelvin return/layout where applicable",
+      "caid_fields": "part_definitions; nets; power_rails",
+      "verification": "Reviewed gate-drive schematic and switching waveforms",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R06",
+      "name": "Fault handling",
+      "owner": "controls/safety engineer",
+      "requirement": "Coordinate current sensing, short-circuit detection, fault turn-off overshoot, interlock, dead time and restart; do not assume avalanche/short-circuit ratings transfer across families",
+      "caid_fields": "constraints; system_architecture; nets",
+      "verification": "Fault tests and protection timing/energy budget",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R07",
+      "name": "Isolation and enclosure",
+      "owner": "electrical safety engineer",
+      "requirement": "Determine applicable insulation requirements, working/transient voltages, clearance/creepage, pollution/altitude, enclosure and discharge requirements",
+      "caid_fields": "mechanical; constraints",
+      "verification": "Application-specific insulation review; no universal spacing number supplied",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R08",
+      "name": "EMI and motor interface",
+      "owner": "EMC/motor engineer",
+      "requirement": "Evaluate parasitics, dv/dt, common-mode current, cable/motor insulation, sensing interference and bearing effects as applicable",
+      "caid_fields": "nets; mechanical; constraints",
+      "verification": "Layout/parasitic review and EMC/motor compatibility tests",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R09",
+      "name": "Packaging and assembly",
+      "owner": "mechanical/manufacturing engineer",
+      "requirement": "Resolve discrete versus module, thermal path, mounting insulation/torque, footprint, assembly process and serviceability",
+      "caid_fields": "part_definitions; components; mechanical",
+      "verification": "Verified package model and assembly/thermal-interface drawing",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R10",
+      "name": "Procurement and cost",
+      "owner": "procurement engineer",
+      "requirement": "Obtain current lifecycle/stock/lead-time and equivalent quantity/currency quotes; include switches, drivers, cooling, magnetics, filtering and validation cost",
+      "caid_fields": "bom; part_definitions.sourcing_offers",
+      "verification": "Dated supplier quotes and complete subsystem cost model",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R11",
+      "name": "Scientific evidence",
+      "owner": "materials scientist",
+      "requirement": "If material/defect claims are required, retain structure/polytype, periodic method, convergence, energy reference, band/k-point/spin and field semantics",
+      "caid_fields": "assembly_metadata.semi01.scientific_artifacts",
+      "verification": "Reviewed periodic-calculation or measurement manifest; optional for COTS selection",
+      "accepted_value": null,
+      "status": "unresolved"
+    },
+    {
+      "id": "R12",
+      "name": "Release and traceability",
+      "owner": "CAID integrator and design reviewer",
+      "requirement": "Link evidence to requirements and actual parts; preserve missing values; validate target IR schema and application import; keep release blocked until qualification",
+      "caid_fields": "validation; is_valid; assembly_metadata",
+      "verification": "Reviewed qualification record and target-project import receipt",
+      "accepted_value": null,
+      "status": "unresolved"
+    }
+  ]
+}

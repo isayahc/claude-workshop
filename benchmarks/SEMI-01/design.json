@@ -1,0 +1,199 @@
+{
+  "schema_version": "1",
+  "benchmark_id": "SEMI-01",
+  "issue": "https://github.com/isayahc/claude-workshop/issues/12",
+  "evidence_scope": "engineering_screen",
+  "release_allowed": false,
+  "voltage_requirement": {
+    "value": 650,
+    "unit": "V",
+    "classification": "Observed",
+    "source": "ISSUE-12",
+    "interpretation": "unspecified",
+    "note": "Could denote a switch class or a DC bus. Do not silently choose either."
+  },
+  "worst_case_drain_peak": null,
+  "max_rating_fraction": null,
+  "operating_point": {
+    "topology": null,
+    "bus_nominal_v": null,
+    "bus_max_including_regeneration_v": null,
+    "load_current_rms_a": null,
+    "load_current_peak_a": null,
+    "power_w": null,
+    "switching_frequency_hz": null,
+    "duty_cycle": null,
+    "dead_time_ns": null,
+    "ambient_range_c": null,
+    "case_temperature_c": null,
+    "cooling": null,
+    "maximum_dv_dt_v_ns": null,
+    "cable_length_m": null,
+    "isolation_category": null,
+    "life_profile": null,
+    "cost_ceiling": null
+  },
+  "proposal": {
+    "classification": "Assumed",
+    "provisional_technology": "SiC",
+    "condition": "Assumed hard-switched motor-drive development; robotic use alone does not establish topology",
+    "source_ids": [
+      "S2",
+      "S4"
+    ],
+    "selected_technology": null,
+    "selected_part_number": null,
+    "alternatives": [
+      "Si MOSFET/IGBT if matched losses and total cost favor it",
+      "GaN if compact high-frequency switching and layout/protection evidence favor it"
+    ],
+    "if_650_v_is_bus": "Reopen voltage-class selection; evaluate higher-rated devices (for example 1200 V SiC or Si IGBT), without approving that class by name alone."
+  },
+  "candidates": [
+    {
+      "id": "SI-01",
+      "family": "Si",
+      "part_number": "IPW65R041CFD7",
+      "manufacturer": "Infineon",
+      "classification": "External knowledge",
+      "source_ids": [
+        "S3",
+        "S6"
+      ],
+      "voltage_class": {
+        "value": 650,
+        "unit": "V",
+        "kind": "catalog_voltage_class",
+        "classification": "External knowledge",
+        "source_ids": [
+          "S3"
+        ],
+        "conditions": "Catalog class only; exact manufacturer operating, switching and transient limits still apply"
+      },
+      "package": "PG-TO247-3",
+      "junction_temperature_max_c": 150,
+      "rds_on": {
+        "values_milliohm": {
+          "typical": 34,
+          "maximum": 41
+        },
+        "conditions": "Tj=25 C, VGS=10 V, ID=24.8 A; S3 table 4"
+      },
+      "qualification_note": "Superjunction comparator; supplier emphasizes resonant topologies. Include a suitable Si IGBT alternative if motor current/frequency makes that relevant.",
+      "commercial_status": {
+        "status": "Active",
+        "as_of": "2026-10-05",
+        "source_id": "S6",
+        "confirmed_stock_quantity": null,
+        "lead_time_days": null,
+        "unit_quote": null,
+        "budgetary_display": {
+          "value": 4.07,
+          "currency": "EUR",
+          "label": "Budgetary Price €/1k",
+          "source_id": "S6",
+          "normalized_unit_quote": null,
+          "note": "Record the displayed pricing basis; obtain matching quantity/currency/date quotes before total-cost comparison."
+        }
+      },
+      "matched_operating_point_losses_w": null,
+      "validated_thermal_model": null,
+      "scientific_artifacts": []
+    },
+    {
+      "id": "SIC-01",
+      "family": "SiC",
+      "part_number": "C3M0060065K",
+      "manufacturer": "Wolfspeed",
+      "classification": "External knowledge",
+      "source_ids": [
+        "S4",
+        "S7"
+      ],
+      "voltage_class": {
+        "value": 650,
+        "unit": "V",
+        "kind": "catalog_voltage_class",
+        "classification": "External knowledge",
+        "source_ids": [
+          "S4"
+        ],
+        "conditions": "Catalog class only; exact manufacturer operating, switching and transient limits still apply"
+      },
+      "package": "TO-247-4 with Kelvin source",
+      "junction_temperature_max_c": 175,
+      "rds_on": {
+        "values_milliohm": {
+          "typical": 60,
+          "maximum": 79
+        },
+        "conditions": "TC=25 C, VGS=15 V, ID=13.2 A; S4 electrical table"
+      },
+      "qualification_note": "Datasheet current is 37 A at TC=25 C and 27 A at TC=100 C, VGS=15 V, TJ<=175 C; not a robot current rating.",
+      "commercial_status": {
+        "status": "Active",
+        "as_of": "2026-10-05",
+        "source_id": "S7",
+        "confirmed_stock_quantity": null,
+        "lead_time_days": null,
+        "unit_quote": null
+      },
+      "matched_operating_point_losses_w": null,
+      "validated_thermal_model": null,
+      "scientific_artifacts": []
+    },
+    {
+      "id": "GAN-01",
+      "family": "GaN",
+      "part_number": "LMG3522R030",
+      "manufacturer": "Texas Instruments",
+      "classification": "External knowledge",
+      "source_ids": [
+        "S5",
+        "S8"
+      ],
+      "voltage_class": {
+        "value": 650,
+        "unit": "V",
+        "kind": "catalog_voltage_class",
+        "classification": "External knowledge",
+        "source_ids": [
+          "S5"
+        ],
+        "conditions": "Catalog class only; exact manufacturer operating, switching and transient limits still apply"
+      },
+      "package": "52-pin 12 x 12 mm top-cooled VQFN",
+      "junction_temperature_max_c": 150,
+      "rds_on": {
+        "values_milliohm": {
+          "typical": 26,
+          "maximum": 35
+        },
+        "conditions": "VIN=5 V, TJ=25 C; S5 section 5.5 default conditions apply; integrated gate driver"
+      },
+      "qualification_note": "38 A recommended RMS versus 55 A absolute maximum. No intrinsic p-n body diode; reverse-conduction/dead-time loss still exists. Do not infer avalanche or DC blocking suitability.",
+      "commercial_status": {
+        "status": "Active",
+        "as_of": "2026-10-05",
+        "source_id": "S8",
+        "confirmed_stock_quantity": null,
+        "lead_time_days": null,
+        "unit_quote": null
+      },
+      "matched_operating_point_losses_w": null,
+      "validated_thermal_model": null,
+      "scientific_artifacts": []
+    }
+  ],
+  "calculation_status": {
+    "periodic_dft": "not_run",
+    "device_simulation": "not_run",
+    "double_pulse_test": "not_run",
+    "thermal_test": "not_run"
+  },
+  "confidence": {
+    "scientific_boundary": "high",
+    "provisional_technology": "conditional",
+    "device_qualification": "insufficient_evidence"
+  }
+}
