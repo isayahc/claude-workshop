@@ -1,6 +1,6 @@
 # EDU-01 — Explain absorption from orbital and transition artifacts
 
-Issue: [#14](https://github.com/isayahc/claude-workshop/issues/14).
+Issue: [#14](https://github.com/Mapped-Assembly/nano-tech-harness/issues/14).
 Evidence scope: **synthetic teaching fixtures**. No molecule, molecular CUBE bundle
 or electronic-structure calculation output was supplied with the issue. The existing
 example CUBE, CSV and ORCA-format text are explicitly synthetic and unrelated.

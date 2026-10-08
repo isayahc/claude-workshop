@@ -196,7 +196,7 @@ def load_source(cache: Path, *, offline: bool = False, refresh: bool = False,
     if offline:
         raise SequenceError(f"Offline cache is missing: {cache}. Fetch once online or use tests/fixtures/abl1/P00519.cache.json.")
     try:
-        request = Request(SOURCE_URL, headers={"Accept": "application/json", "User-Agent": "claude-workshop/0.1 ABL1-sequences"})
+        request = Request(SOURCE_URL, headers={"Accept": "application/json", "User-Agent": "nano-tech-harness/0.1 ABL1-sequences"})
         with urlopen(request, timeout=timeout) as response:
             if response.status != 200 or response.headers.get_content_type() != "application/json":
                 raise SequenceError("UniProt must return HTTP 200 with an application/json response.")

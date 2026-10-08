@@ -1,6 +1,6 @@
 # ABL1 sequence input: wild type and T315I
 
-This is the sequence-input stage in [issue #4](https://github.com/isayahc/claude-workshop/issues/4).
+This is the sequence-input stage in [issue #4](https://github.com/Mapped-Assembly/nano-tech-harness/issues/4).
 It retrieves the reviewed human ABL1 entry from UniProt, extracts a kinase-domain
 interval, checks the reference residue, and exports wild-type and T315I FASTA
 files with a provenance manifest. It does not predict a structure, locate a

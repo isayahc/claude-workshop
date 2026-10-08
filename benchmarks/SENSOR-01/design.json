@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "benchmark_id": "SENSOR-01",
-  "issue_url": "https://github.com/isayahc/claude-workshop/issues/10",
+  "issue_url": "https://github.com/Mapped-Assembly/nano-tech-harness/issues/10",
   "artifact_kind": "engineering_proposal_sidecar_not_validated_HardwareIR",
   "sources": {
     "N1": {

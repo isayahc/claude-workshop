@@ -1,6 +1,6 @@
 # SEMI-01 — 650 V robotic power switching
 
-Addresses [issue #12](https://github.com/isayahc/claude-workshop/issues/12).
+Addresses [issue #12](https://github.com/Mapped-Assembly/nano-tech-harness/issues/12).
 
 **Recommendation: use SiC as a provisional development baseline if the intended application is a hard-switched robotic motor drive. Retain silicon and GaN for a comparison at the actual operating point. No device or operating voltage is approved.** This is an **Assumed** engineering priority, informed by manufacturer servo-drive guidance [S2], not a numerical ranking. The issue does not specify the topology, load, switching frequency, cooling or meaning of “650 V.”
 

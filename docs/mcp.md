@@ -7,8 +7,8 @@ Use any MCP client/agent that supports **local stdio servers** to inspect scalar
 Python 3.11+ is required. From a fresh checkout:
 
 ```bash
-git clone https://github.com/isayahc/claude-workshop.git
-cd claude-workshop
+git clone https://github.com/Mapped-Assembly/nano-tech-harness.git
+cd nano-tech-harness
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[mcp]'
@@ -18,8 +18,8 @@ orbital-studio-mcp --data-dir ./examples/mcp
 Windows PowerShell, without activating the environment:
 
 ```powershell
-git clone https://github.com/isayahc/claude-workshop.git
-cd claude-workshop
+git clone https://github.com/Mapped-Assembly/nano-tech-harness.git
+cd nano-tech-harness
 py -3 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e ".[mcp]"
 .\.venv\Scripts\python.exe -m orbital_viewer.mcp_server --data-dir .\examples\mcp
@@ -39,18 +39,18 @@ In a client with the common `mcpServers` configuration format, use absolute path
 {
   "mcpServers": {
     "orbital-studio": {
-      "command": "/absolute/path/claude-workshop/.venv/bin/python",
+      "command": "/absolute/path/nano-tech-harness/.venv/bin/python",
       "args": [
         "-m", "orbital_viewer.mcp_server",
-        "--data-dir", "/absolute/path/claude-workshop/examples/mcp",
-        "--output-dir", "/absolute/path/claude-workshop/exports"
+        "--data-dir", "/absolute/path/nano-tech-harness/examples/mcp",
+        "--output-dir", "/absolute/path/nano-tech-harness/exports"
       ]
     }
   }
 }
 ```
 
-On Windows, use e.g. `C:/work/claude-workshop/.venv/Scripts/python.exe` and `C:/work/claude-workshop/examples/mcp`. The editable package install makes the command independent of the client's working directory. Approve/connect the local server using your client's normal controls, then discover its tools. No agent vendor is assumed.
+On Windows, use e.g. `C:/work/nano-tech-harness/.venv/Scripts/python.exe` and `C:/work/nano-tech-harness/examples/mcp`. The editable package install makes the command independent of the client's working directory. Approve/connect the local server using your client's normal controls, then discover its tools. No agent vendor is assumed.
 
 ## Tools and result contract
 

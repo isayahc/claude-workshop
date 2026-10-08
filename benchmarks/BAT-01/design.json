@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "benchmark_id": "BAT-01",
-  "issue": "https://github.com/isayahc/claude-workshop/issues/11",
+  "issue": "https://github.com/Mapped-Assembly/nano-tech-harness/issues/11",
   "evidence_scope": "screening_plan",
   "release_allowed": false,
   "target": {

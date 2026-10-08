@@ -1,6 +1,6 @@
 # MAT-01 — outdoor UV protective window
 
-[Issue #9](https://github.com/isayahc/claude-workshop/issues/9). Research refreshed
+[Issue #9](https://github.com/Mapped-Assembly/nano-tech-harness/issues/9). Research refreshed
 October 5, 2026. This benchmark separates a material decision, actual software
 execution, a schema check, and physical qualification.
 

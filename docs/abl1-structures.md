@@ -1,6 +1,6 @@
 # Local ESMFold structure stage
 
-[Issue #5](https://github.com/isayahc/claude-workshop/issues/5) adds the
+[Issue #5](https://github.com/Mapped-Assembly/nano-tech-harness/issues/5) adds the
 sequence-to-structure stage after the [validated sequence inputs](abl1-sequences.md).
 The same command accepts either WT or T315I FASTA. It launches a local worker,
 validates the resulting PDB against the requested sequence, preserves confidence

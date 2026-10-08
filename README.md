@@ -1,45 +1,63 @@
-# Claude Workshop
+# Nano Tech Harness
 
-A hands-on space for learning, experimenting, and building with Claude and Claude Code.
+Nano Tech Harness is [Mapped Assembly](https://github.com/Mapped-Assembly)'s
+collection of scientific tools and reproducible engineering benchmarks. It combines
+Orbital Studio molecular visualization and a local MCP server, traceable ABL1/T315I
+sequence and structure workflows, and evidence bundles for materials, sensors,
+batteries, semiconductors, process planning, and teaching.
 
-Use this repository to collect workshop materials, try ideas in small projects, and keep useful prompts and notes in one place. The repository starts intentionally lightweight so it can grow around the exercises and tools used by your workshop.
+Synthetic demonstrations, computed results, literature evidence, and physical
+qualification remain explicitly distinguished. See each workflow's scientific
+limits before interpreting its outputs. No particular editor, agent, or model
+provider is required for the local viewer, MCP tools, or offline benchmarks.
 
-## Getting Started
+## Getting started
 
-1. Clone the repository:
+Install Git and Python 3.11+. Linux/macOS or WSL2:
 
-   ```bash
-   git clone https://github.com/isayahc/claude-workshop.git
-   cd claude-workshop
-   ```
-
-2. Open the project in your editor or Claude Code.
-3. Add workshop exercises, project files, and notes as you work.
-
-## Working With Claude Code
-
-Claude Code can help you explore a codebase, make focused changes, run checks, and explain its reasoning. Give it a clear goal, relevant context, and constraints. Review proposed changes and run the project's checks before relying on them.
-
-## Suggested Workshop Structure
-
-As the workshop grows, you can organize material into folders such as:
-
-```text
-exercises/   Guided practice
-projects/    Small hands-on builds
-notes/       Concepts, prompts, and takeaways
+```bash
+git clone https://github.com/Mapped-Assembly/nano-tech-harness.git
+cd nano-tech-harness
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
 
-Add setup instructions and verification steps alongside each exercise or project so others can follow along.
+Windows PowerShell, without activating the environment:
+
+```powershell
+git clone https://github.com/Mapped-Assembly/nano-tech-harness.git
+cd nano-tech-harness
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+`requirements.txt` installs this checkout with the `mcp`, `ui`, and `test` extras.
+It does not install the optional `fold` dependencies or download model weights.
+Run the commands below from the repository root using the virtual environment.
+In PowerShell, replace `python` with `.\.venv\Scripts\python.exe` if it is not
+activated. Real ESMFold execution has a separate Linux/WSL2 setup in the
+[structure guide](docs/abl1-structures.md).
+
+| Path | Current contents |
+| --- | --- |
+| [`app.py`](app.py), [`orbital_viewer/`](orbital_viewer/) | Streamlit viewer, CUBE/spectrum processing, MCP tools, and benchmark helpers |
+| [`protein_workflow/`](protein_workflow/), [`data/fetch_sequences.py`](data/fetch_sequences.py) | ABL1 sequence preparation and local structure-stage commands |
+| [`benchmarks/`](benchmarks/) | Six reproducible scientific and engineering cases with evidence and limitations |
+| [`examples/mcp/`](examples/mcp/) | Synthetic CUBE, ORCA, and transition CSV examples |
+| [`docs/`](docs/) | MCP setup and ABL1 workflow guides |
+| [`tests/`](tests/) | Offline checks, protocol tests, and source fixtures |
 
 ## Contributing
 
-Add material that is practical, clearly explained, and easy to try. Include any prerequisites and instructions needed to reproduce the result.
+Include reproducible commands, prerequisites, source citations, and explicit
+scientific limitations with changes. Run the checks below and submit a focused
+pull request to this repository's default branch.
 
 ## ABL1 protein workflow
 
 The [sequence-input guide](docs/abl1-sequences.md) implements the first ABL1/T315I
-workshop stage. It retrieves and caches UniProt P00519 isoform IA, exports the
+workflow stage. It retrieves and caches UniProt P00519 isoform IA, exports the
 wild-type kinase domain and a verified single T315I mutant, and preserves every
 residue's source mapping and provenance. Python 3.11+ is sufficient for this stage.
 
@@ -70,13 +88,12 @@ docking and the comparison interface remain tracked in #6–#8.
 
 A Python/Streamlit molecular orbital viewer inspired by the workshop's ORCA/NTO visualization workflow. No ORCA installation is needed to view existing data.
 
-### Run (Python 3.11+ / WSL2)
+### Run
+
+After the setup above:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
 Open the local URL printed by Streamlit (normally http://localhost:8501).
@@ -87,7 +104,7 @@ Orbital Studio also runs as a standalone local MCP server (stdio), without Strea
 
 ```bash
 python -m pip install -e '.[mcp]'
-orbital-studio-mcp --data-dir ./examples/mcp
+python -m orbital_viewer.mcp_server --data-dir ./examples/mcp
 ```
 
 Connect this command in your MCP client's configuration to inspect CUBE/transition files, broaden spectra, and export offline HTML/CSV. The required data directory limits which local files the tools can read; exports are created under its `exports` directory by default. No API key or password is required. See the [MCP setup guide](docs/mcp.md) for Windows commands, generic client configuration, tool schemas, an example session, and data-handling limitations.
@@ -121,6 +138,19 @@ Supported: scalar CUBE grids, single-orbital negative-atom-count CUBE records, F
 Spectrum broadening uses area-normalized Gaussians in **energy space**, with FWHM in eV. Oscillator strengths determine areas. The wavelength view plots the same envelope against `hc/E`; its ordinate remains f/eV, not f/nm. This is not a prediction of calibrated absorbance. cclib compatibility varies by ORCA version/output; CSV is the explicit fallback. No NTO weights are inferred from oscillator strengths.
 
 Files are processed by the app's Python server. Run locally for local-only calculation handling. Offline exported HTML embeds Plotly and the displayed data.
+
+## Engineering and teaching benchmarks
+
+Each case includes reproducible commands and identifies what is still unverified:
+
+| Case | Purpose |
+| --- | --- |
+| [EDU-01](benchmarks/EDU-01/README.md) | Evidence-linked explanation of absorption and orbital concepts |
+| [MAT-01](benchmarks/MAT-01/README.md) | Conditional UV protective-window selection and pinned Hardware IR checks |
+| [SENSOR-01](benchmarks/SENSOR-01/README.md) | Uncalibrated UV sensor sizing and design handoffs |
+| [BAT-01](benchmarks/BAT-01/README.md) | Reference-aware electrolyte screening and unresolved cell requirements |
+| [SEMI-01](benchmarks/SEMI-01/README.md) | Si/SiC/GaN comparison for a robotic power module |
+| [PROCESS-01](benchmarks/PROCESS-01/README.md) | Evidence and manual handoffs for process planning |
 
 ### Explain absorption: EDU-01
 
@@ -174,12 +204,37 @@ requirements-only proposal checked against the pinned Forma schema, conservative
 voltage-headroom checks and two actual MCP calls on a synthetic scalar field.
 Successful processing never approves a module or substitutes for device tests.
 
-### Verification
+## Verification
 
 ```bash
 python -m pytest -q
 ```
 
 Tests cover CUBE ordering/units/affine axes, malformed data, signed surfaces, spectrum area conservation, CSV validation, Streamlit demo/upload states, MCP schemas and stdio calls, export contents, and bounded local file access.
+They also check ABL1 source provenance, illustrative structure runs and cache/failure
+paths, and benchmark evidence contracts. Real pretrained folding is an optional
+smoke test described in the structure guide.
 
 References: [ORCA NTO/TDDFT documentation](https://www.faccts.de/docs/orca/6.1/manual/contents/spectroscopyproperties/tddft.html), [cclib data units](https://cclib.github.io/data.html), [CUBE format](https://paulbourke.org/dataformats/cube/).
+
+## Repository identity and provenance
+
+The canonical repository is
+[`Mapped-Assembly/nano-tech-harness`](https://github.com/Mapped-Assembly/nano-tech-harness),
+transferred and renamed from `isayahc/claude-workshop` on October 8, 2026.
+For an existing checkout, update its remote from inside that directory:
+
+```bash
+git remote set-url origin https://github.com/Mapped-Assembly/nano-tech-harness.git
+```
+
+Existing local directories can keep their names; use their actual absolute paths
+in MCP client configuration. The installed distribution remains `orbital-studio`,
+with `orbital_viewer` / `protein_workflow` imports and the `orbital-studio-mcp`,
+`abl1-fetch-sequences`, and `abl1-fold` commands.
+
+Pinned commit URLs, dated source records, fixture hashes, and references to CAID /
+Forma in historical benchmark evidence retain their original identity. They record
+the source or integration target inspected at the time, not the current owner of
+this repository. The rename does not imply new scientific validation or a change
+to those external projects.

@@ -1,6 +1,6 @@
 # SENSOR-01 — 300 nm UV detector
 
-Addresses [issue #10](https://github.com/isayahc/claude-workshop/issues/10).
+Addresses [issue #10](https://github.com/Mapped-Assembly/nano-tech-harness/issues/10).
 
 **Decision: proceed to a reviewed COTS prototype; do not release a calibrated instrument.**
 A filtered SiC photodiode with a transimpedance amplifier (TIA), ADC and I2C host
