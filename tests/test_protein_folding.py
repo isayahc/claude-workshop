@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import time
 from typing import Any
 
 import pytest
@@ -256,20 +257,37 @@ def test_backend_failure_states_and_logs(inputs: Path, tmp_path: Path,
         assert json.loads(result.validation_path.read_text())["missing_domain_positions"] == list(range(1, 253))
 
 
-@pytest.mark.skipif(os.name != "posix", reason="Process-group timeout contract targets Linux/WSL2")
-def test_timeout_terminates_descendant(tmp_path: Path) -> None:
-    """Do not leave inference descendants running after the controlling worker times out."""
+@pytest.mark.skipif(os.name != "posix" or not Path("/proc/self").exists(), reason="Process-group check requires Linux procfs")
+@pytest.mark.parametrize("stage", ["fold", "pocket"])
+def test_timeout_terminates_descendant(tmp_path: Path, stage: str) -> None:
+    """Check the actual descendant in procfs, including containers with a different mounted PID namespace."""
+    from protein_workflow import pockets
+
     script = tmp_path / "spawn.py"
     child_pid = tmp_path / "child.pid"
+    child_code = ("import os,time\nfrom pathlib import Path\n"
+                  f"Path({str(child_pid)!r}).write_text(os.readlink('/proc/self'))\n"
+                  "time.sleep(30)\n")
     script.write_text("import subprocess,sys,time\nfrom pathlib import Path\n"
-                      "child=subprocess.Popen([sys.executable,'-c','import time; time.sleep(30)'])\n"
-                      f"Path({str(child_pid)!r}).write_text(str(child.pid))\n"
+                      f"subprocess.Popen([sys.executable,'-c',{child_code!r}])\n"
                       "time.sleep(30)\n")
-    with pytest.raises(fold.PredictionTimeout):
-        fold.run_process([sys.executable, str(script)], tmp_path, "worker", 0.5)
+    runner, error = (fold.run_process, fold.PredictionTimeout) if stage == "fold" else (pockets.run_process, pockets.PocketTimeout)
+    with pytest.raises(error):
+        runner([sys.executable, str(script)], tmp_path, "worker", 0.5)
     pid = int(child_pid.read_text())
     proc = Path(f"/proc/{pid}/stat")
-    assert not proc.exists() or proc.read_text().split()[2] == "Z"
+
+    def still_running() -> bool:
+        """Allow an already killed descendant to disappear between procfs reads."""
+        try:
+            return proc.read_text().split()[2] != "Z"
+        except FileNotFoundError:
+            return False
+
+    deadline = time.monotonic() + 2
+    while still_running() and time.monotonic() < deadline:
+        time.sleep(.01)
+    assert not still_running()
 
 
 @pytest.mark.parametrize("field,value", [("seed", -1), ("seed", True), ("chunk_size", 0),
