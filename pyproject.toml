@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "orbital-studio"
 version = "0.1.0"
-description = "Local molecular orbital and transition-spectrum inspection"
+description = "Molecular visualization, ABL1 workflows, and scientific engineering benchmarks for Nano Tech Harness"
 requires-python = ">=3.11"
 dependencies = [
     "numpy>=2.0,<3",
@@ -13,6 +13,10 @@ dependencies = [
     "scikit-image>=0.24,<1",
     "cclib>=1.8.1,<2",
 ]
+
+[project.urls]
+Repository = "https://github.com/Mapped-Assembly/nano-tech-harness"
+Issues = "https://github.com/Mapped-Assembly/nano-tech-harness/issues"
 
 [project.optional-dependencies]
 mcp = ["mcp>=1.28,<2"]

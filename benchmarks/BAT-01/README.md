@@ -1,6 +1,6 @@
 # BAT-01 — High-voltage Li-ion electrolyte screening
 
-Addresses [issue #11](https://github.com/isayahc/claude-workshop/issues/11).
+Addresses [issue #11](https://github.com/Mapped-Assembly/nano-tech-harness/issues/11).
 
 **Decision: proceed with a literature-led comparison and an upstream calculation/test plan; do not select or release an electrolyte.** There is no defensible overall winner from the supplied inputs. Sulfolane (SL) is a proposed oxidation-focused research lead, not a qualified replacement. Keep a carbonate formulation as a control and consider an EC-free EMC/FEC comparator only after confirming that the electrode system makes that comparison relevant.
 

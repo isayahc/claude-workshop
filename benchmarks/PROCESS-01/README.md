@@ -1,6 +1,6 @@
 # PROCESS-01: photoinitiator-driven UV-curing station
 
-Issue: [#13](https://github.com/isayahc/claude-workshop/issues/13).
+Issue: [#13](https://github.com/Mapped-Assembly/nano-tech-harness/issues/13).
 
 **Engineering disposition: BLOCKED for material-specific wavelength selection and production release.** The issue supplies no photoinitiator identity, formulation, measured absorption, material-specific quantum calculation, cure-response data, or part requirements. A successful fixture run demonstrates the tools, not a working curing recipe. This is a bounded benchmark result, not a manufacturing-ready machine or a safety certification.
 

@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "benchmark_id": "SEMI-01",
-  "issue": "https://github.com/isayahc/claude-workshop/issues/12",
+  "issue": "https://github.com/Mapped-Assembly/nano-tech-harness/issues/12",
   "evidence_scope": "engineering_screen",
   "release_allowed": false,
   "voltage_requirement": {
